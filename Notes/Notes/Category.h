@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Note.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Category : NSObject
@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSString *categoryId;
 @property NSString *categoryTitle;
 @property NSDate *categoryCreatedDate;
+@property NSMutableArray <Note *> *notes;
 
 - (instancetype)initWithId:(NSString *)categoryId title:(NSString *)title andCreatedDate:(NSDate *)createdDate;
 - (instancetype)initWithId:(NSString *)categoryId andTitle:(NSString *)title;

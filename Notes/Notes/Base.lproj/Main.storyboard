@@ -48,9 +48,10 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="noteTableViewCell"/>
                                 <connections>
-                                    <outlet property="contentLabel" destination="tY5-oI-QWX" id="TMw-NZ-v3G"/>
-                                    <outlet property="createdDateLabel" destination="9sy-vk-TzW" id="Bno-Hv-Fge"/>
+                                    <outlet property="contentLabel" destination="tY5-oI-QWX" id="2eM-xA-PG0"/>
+                                    <outlet property="createdDateLabel" destination="9sy-vk-TzW" id="gOB-9L-urh"/>
                                     <outlet property="titleLabel" destination="StL-5W-8YK" id="bOx-O6-ymr"/>
                                 </connections>
                             </tableViewCell>

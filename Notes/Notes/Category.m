@@ -15,6 +15,7 @@
     if (self) {
         self.categoryId = categoryId;
         self.categoryTitle = title;
+        self.notes = [NSMutableArray new];
     }
     return self;
 }

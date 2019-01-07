@@ -13,17 +13,16 @@
 
 @interface ViewController ()
 
-    @property NSMutableArray<Note *> *tableData;
     @property NSMutableArray<Category *> *categoryData;
 @end
 
 @implementation ViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"NoteTableViewCell" bundle:nil] forCellReuseIdentifier:[NoteTableViewCell identifier]];
     NSString *fileName = [[NSBundle mainBundle] pathForResource:@"notes"
                                                          ofType:@"json"];
 
-    self.tableData = [NSMutableArray new];
     self.categoryData = [NSMutableArray new];
     //check file exists
     if (fileName) {
@@ -57,7 +56,8 @@
                 NSString *noteCategoryId = [element objectForKey:@"categoryId"];
                 NSDate *noteCreatedDate = [NSDate dateWithTimeIntervalSince1970:[[element objectForKey:@"createdDate"] integerValue]];
                 Note *note = [[Note alloc] initWithId: noteId createdDate:noteCreatedDate  title:noteTitle content:noteContent andCategoryId:noteCategoryId];
-                [self.tableData addObject:note];
+                Category *categoryNote = [self categoryById:noteCategoryId];
+                [categoryNote.notes addObject:note];
             }
             
         }
@@ -70,21 +70,17 @@
     return [self.categoryData count];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    __block int count = 0;
     Category *category = [self.categoryData objectAtIndex:section];
-    [self.tableData enumerateObjectsUsingBlock:^(Note * _Nonnull note, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([note.noteCategoryId isEqualToString:category.categoryId])
-            count = count + 1;
-    }];
-    return count;
+    return [category.notes count];
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     Category *category = [self.categoryData objectAtIndex:section];
     return category.categoryTitle;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Note *note = [self.tableData objectAtIndex:indexPath.item];
-    /*
+    Category *category = [self.categoryData objectAtIndex:indexPath.section];
+    Note *note = [category.notes objectAtIndex:indexPath.item];
+    
      NoteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[NoteTableViewCell identifier]];
     if (!cell)
         cell = [NoteTableViewCell new];
@@ -93,12 +89,16 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateStyle = NSDateFormatterLongStyle;
     cell.createdDateLabel.text = [formatter stringFromDate:note.noteCreatedDate];
-     */
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:[NoteTableViewCell identifier]];
-    cell.textLabel.text = note.noteTitle;
-    cell.detailTextLabel.text = note.noteContent;
     return cell;
 }
 
-
+- (Category *)categoryById:(NSString *)categoryId{
+    __block Category *categoryNote;
+    [self.categoryData enumerateObjectsUsingBlock:^(Category * _Nonnull category, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([category.categoryId isEqualToString:categoryId]){
+            categoryNote = category;
+        }
+    }];
+    return categoryNote;
+}
 @end
