@@ -10,97 +10,66 @@
 #import "Note.h"
 #import "Category.h"
 #import "NoteTableViewCell.h"
+#import "DataManager.h"
 
 @interface ViewController ()
 
-    @property NSMutableArray<Category *> *categoryData;
+    @property NSArray<Note *> *tableData;
 @end
 
 @implementation ViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"NoteTableViewCell" bundle:nil] forCellReuseIdentifier:[NoteTableViewCell identifier]];
-    NSString *fileName = [[NSBundle mainBundle] pathForResource:@"notes"
-                                                         ofType:@"json"];
+    DataManager *dataManager = [DataManager sharedManager];
+    self.tableData = dataManager.notes;
+}
 
-    self.categoryData = [NSMutableArray new];
-    //check file exists
-    if (fileName) {
-        //retrieve file content
-        NSData *jsonData = [[NSData alloc] initWithContentsOfFile:fileName];
-        
-        //convert JSON NSData to a usable NSDictionary
-        NSError *error;
-        NSDictionary *notesDictionary = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                              options:0
-                                                                error:&error];
-        
-        
-        if (error) {
-            NSLog(@"Something went wrong! %@", error.localizedDescription);
-        }
-        else {
-            NSArray *notes = [notesDictionary objectForKey:@"notes"];
-            NSArray *categories = [notesDictionary objectForKey:@"categories"];
-            for (NSDictionary *element in categories){
-                NSString *categoryId = [element objectForKey:@"id"];
-                NSString *categoryTitle = [element objectForKey:@"title"];
-                NSDate *categoryCreatedDate = [NSDate dateWithTimeIntervalSince1970:[[element objectForKey:@"createdDate"] integerValue]];
-                Category *category = [[Category alloc] initWithId:categoryId title:categoryTitle andCreatedDate:categoryCreatedDate];
-                [self.categoryData addObject:category];
-            }
-            for (NSDictionary *element in notes){
-                NSString *noteId = [element objectForKey:@"id"];
-                NSString *noteTitle = [element objectForKey:@"title"];
-                NSString *noteContent = [element objectForKey:@"content"];
-                NSString *noteCategoryId = [element objectForKey:@"categoryId"];
-                NSDate *noteCreatedDate = [NSDate dateWithTimeIntervalSince1970:[[element objectForKey:@"createdDate"] integerValue]];
-                Note *note = [[Note alloc] initWithId: noteId createdDate:noteCreatedDate  title:noteTitle content:noteContent andCategoryId:noteCategoryId];
-                Category *categoryNote = [self categoryById:noteCategoryId];
-                [categoryNote.notes addObject:note];
-            }
-            
-        }
-    }
-    else {
-        NSLog(@"Couldn't find file!");
-    }    // Do any additional setup after loading the view, typically from a nib.
-}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.categoryData count];
+    // Return the number of sections.
+    if ([self.tableData count]) {
+        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        return 1;
+        
+    } else {
+        
+        // Display a message when the table is empty
+        UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        
+        messageLabel.text = @"No data is currently available. Please pull down to refresh.";
+        messageLabel.textColor = [UIColor blackColor];
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = NSTextAlignmentCenter;
+        messageLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:20];
+        [messageLabel sizeToFit];
+        
+        self.tableView.backgroundView = messageLabel;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+    }
+    
+    return 0;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    Category *category = [self.categoryData objectAtIndex:section];
-    return [category.notes count];
+    return [self.tableData count];
 }
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    Category *category = [self.categoryData objectAtIndex:section];
-    return category.categoryTitle;
-}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Category *category = [self.categoryData objectAtIndex:indexPath.section];
-    Note *note = [category.notes objectAtIndex:indexPath.item];
+    Note *note = [self.tableData objectAtIndex:indexPath.item];
     
      NoteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[NoteTableViewCell identifier]];
     if (!cell)
         cell = [NoteTableViewCell new];
-    cell.titleLabel.text = note.noteTitle;
-    cell.contentLabel.text = note.noteContent;
+    cell.titleLabel.text = note.title;
+    cell.contentLabel.text = note.content;
     cell.contentLabel.textContainer.maximumNumberOfLines = 2;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateStyle = NSDateFormatterLongStyle;
-    cell.createdDateLabel.text = [formatter stringFromDate:note.noteCreatedDate];
-    cell.categoryLabel.text = category.categoryTitle;
+    cell.createdDateLabel.text = [formatter stringFromDate:note.createdDate];
+    cell.categoryLabel.text = note.categoryTitle;
     return cell;
 }
 
-- (Category *)categoryById:(NSString *)categoryId{
-    __block Category *categoryNote;
-    [self.categoryData enumerateObjectsUsingBlock:^(Category * _Nonnull category, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([category.categoryId isEqualToString:categoryId]){
-            categoryNote = category;
-        }
-    }];
-    return categoryNote;
-}
 @end

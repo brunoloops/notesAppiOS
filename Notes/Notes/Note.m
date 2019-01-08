@@ -9,23 +9,24 @@
 #import "Note.h"
 
 @implementation Note
-- (instancetype)initWithTitle:(NSString *)title content:(NSString *)content andCategoryId:(NSString *)categoryId {
+- (instancetype)initWithTitle:(NSString *)title content:(NSString *)content categoryTitle:(NSString *)categoryTitle andCategoryId:(NSString *)categoryId {
     self = [super init];
     if (self) {
-        self.noteTitle = title;
-        self.noteContent = content;
-        self.noteCategoryId = categoryId;
-        self.noteId = [[NSUUID UUID] UUIDString];
-        self.noteCreatedDate = [NSDate date];
+        self.title = title;
+        self.content = content;
+        self.categoryId = categoryId;
+        self.categoryTitle = categoryTitle;
+        self.identifier = [[NSUUID UUID] UUIDString];
+        self.createdDate = [NSDate date];
     }
     return self;
 }
 
-- (instancetype)initWithId:(NSString *)noteId createdDate:(NSDate *)createdDate title:(NSString *)title content:(NSString *)content andCategoryId:(NSString *)categoryId{
-    self = [self initWithTitle:title content:content andCategoryId:categoryId];
+- (instancetype)initWithId:(NSString *)noteId createdDate:(NSDate *)createdDate title:(NSString *)title content:(NSString *)content categoryTitle:(NSString *)categoryTitle andCategoryId:(NSString *)categoryId {
+    self = [self initWithTitle:title content:content categoryTitle:categoryTitle andCategoryId:categoryId];
     if (self) {
-        self.noteId = noteId;
-        self.noteCreatedDate = createdDate;
+        self.identifier = noteId;
+        self.createdDate = createdDate;
     }
     return self;
 }

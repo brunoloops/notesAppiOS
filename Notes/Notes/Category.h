@@ -12,10 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Category : NSObject
 
-@property NSString *categoryId;
-@property NSString *categoryTitle;
-@property NSDate *categoryCreatedDate;
-@property NSMutableArray <Note *> *notes;
+@property (strong, nonatomic) NSString *identifier;
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSDate *createdDate;
 
 - (instancetype)initWithId:(NSString *)categoryId title:(NSString *)title andCreatedDate:(NSDate *)createdDate;
 - (instancetype)initWithId:(NSString *)categoryId andTitle:(NSString *)title;

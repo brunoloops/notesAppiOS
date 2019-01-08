@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8493654421E4F4B600E63BEF /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493654321E4F4B600E63BEF /* DataManager.m */; };
 		84F3C0F721E3A2320058B573 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3C0F621E3A2320058B573 /* AppDelegate.m */; };
 		84F3C0FA21E3A2320058B573 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3C0F921E3A2320058B573 /* ViewController.m */; };
 		84F3C0FD21E3A2320058B573 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F3C0FB21E3A2320058B573 /* Main.storyboard */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8493654221E4F4B600E63BEF /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		8493654321E4F4B600E63BEF /* DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		84F3C0F221E3A2320058B573 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F3C0F521E3A2320058B573 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84F3C0F621E3A2320058B573 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -131,6 +134,8 @@
 				84F3C13121E3D08F0058B573 /* NoteTableViewCell.xib */,
 				84F3C13321E3D1180058B573 /* NoteTableViewCell.h */,
 				84F3C13421E3D1180058B573 /* NoteTableViewCell.m */,
+				8493654221E4F4B600E63BEF /* DataManager.h */,
+				8493654321E4F4B600E63BEF /* DataManager.m */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 			files = (
 				84F3C0FA21E3A2320058B573 /* ViewController.m in Sources */,
 				84F3C10521E3A2330058B573 /* main.m in Sources */,
+				8493654421E4F4B600E63BEF /* DataManager.m in Sources */,
 				84F3C12E21E3AC960058B573 /* Category.m in Sources */,
 				84F3C13521E3D1180058B573 /* NoteTableViewCell.m in Sources */,
 				84F3C0F721E3A2320058B573 /* AppDelegate.m in Sources */,
