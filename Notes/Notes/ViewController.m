@@ -13,8 +13,8 @@
 #import "DataManager.h"
 
 @interface ViewController ()
-
-    @property NSArray<Note *> *tableData;
+    @property (nonatomic, strong) UIRefreshControl *refreshControl;
+    @property (nonatomic, strong) NSArray<Note *> *tableData;
 @end
 
 @implementation ViewController
@@ -23,8 +23,22 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"NoteTableViewCell" bundle:nil] forCellReuseIdentifier:[NoteTableViewCell identifier]];
     DataManager *dataManager = [DataManager sharedManager];
     self.tableData = dataManager.notes;
+    
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+    
+    if (@available(iOS 10.0, *)) {
+        self.tableView.refreshControl = self.refreshControl;
+    } else {
+        [self.tableView addSubview:self.refreshControl];
+    }
 }
-
+- (void)refreshTable {
+    DataManager *dataManager = [DataManager sharedManager];
+    self.tableData = dataManager.notes;
+    [self.refreshControl endRefreshing];
+    [self.tableView reloadData];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     if ([self.tableData count]) {
