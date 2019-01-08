@@ -13,7 +13,6 @@
 #import "DataManager.h"
 
 @interface ViewController ()
-    @property (nonatomic, strong) UIRefreshControl *refreshControl;
     @property (nonatomic, strong) NSArray<Note *> *tableData;
 @end
 
