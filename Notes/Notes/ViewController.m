@@ -86,9 +86,11 @@
         cell = [NoteTableViewCell new];
     cell.titleLabel.text = note.noteTitle;
     cell.contentLabel.text = note.noteContent;
+    cell.contentLabel.textContainer.maximumNumberOfLines = 2;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateStyle = NSDateFormatterLongStyle;
     cell.createdDateLabel.text = [formatter stringFromDate:note.noteCreatedDate];
+    cell.categoryLabel.text = category.categoryTitle;
     return cell;
 }
 

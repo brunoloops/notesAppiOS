@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *createdDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *contentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 + (NSString *)identifier;
 
 @end
