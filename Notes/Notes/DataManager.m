@@ -8,6 +8,13 @@
 
 #import "DataManager.h"
 
+@interface DataManager()
+
+@property (nonatomic, strong) NSArray *notes;
+@property (nonatomic, strong) NSArray *categories;
+
+@end
+
 @implementation DataManager
 
 + (instancetype)sharedManager {
@@ -22,48 +29,34 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        NSString *urlAsString = [NSString stringWithFormat:@"https://s3.amazonaws.com/kezmo.assets/sandbox/notes.json"];
-        
-        NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
-        NSString *encodedUrlAsString = [urlAsString stringByAddingPercentEncodingWithAllowedCharacters:set];
-        
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-        
-        [[session dataTaskWithURL:[NSURL URLWithString:encodedUrlAsString]
-                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                    
-                    NSLog(@"RESPONSE: %@",response);
-                    NSLog(@"DATA: %@",data);
-                    
-                    if (!error) {
-                        // Success
-                        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                            [self parseJsonData:data];
-
-                        }  else {
-                            //Web server is returning an error
-                        }
-                    } else {
-                        // Fail
-                        NSLog(@"error : %@", error.description);
-                    }
-                }] resume];
-        /*
-        NSString *fileName = [[NSBundle mainBundle] pathForResource:@"notes"
-                                                             ofType:@"json"];
-        //check file exists
-        if (fileName) {
-            //retrieve file content
-            NSData *jsonData = [[NSData alloc] initWithContentsOfFile:fileName];
-            [self parseJsonData:jsonData];
-        }
-        else {
-            NSLog(@"Couldn't find file!");
-        }*/
     }
     return self;
 }
-- (void)parseJsonData:(NSData *)jsonData{
+- (void)getNotesWithCompletionBlock:(void (^)(NSArray * _Nonnull, NSError *error))completionBlock {
+    NSString *urlAsString = [NSString stringWithFormat:@"https://s3.amazonaws.com/kezmo.assets/sandbox/notes.json"];
+    
+    NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
+    NSString *encodedUrlAsString = [urlAsString stringByAddingPercentEncodingWithAllowedCharacters:set];
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    [[session dataTaskWithURL:[NSURL URLWithString:encodedUrlAsString]
+            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                if (!error) {
+                    // Success
+                    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                        completionBlock([self parseJsonData:data], nil);
+                        
+                    }  else {
+                        completionBlock([NSArray new], [NSError errorWithDomain:NSURLErrorDomain code:0 userInfo:NULL]);
+                    }
+                } else {
+                    // Fail
+                    completionBlock([NSArray new], error);
+                }
+            }] resume];
+}
+- (NSArray *)parseJsonData:(NSData *)jsonData{
     //convert JSON NSData to a usable NSDictionary
     NSError *error;
     NSDictionary *notesDictionary = [NSJSONSerialization JSONObjectWithData:jsonData
@@ -104,6 +97,7 @@
         }
         self.notes = [NSArray arrayWithArray:noteArray];
     }
+    return self.notes;
 }
 
  - (Category *)categoryById:(NSString *)categoryId{

@@ -14,10 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DataManager : NSObject
 
-@property (retain, nonatomic) NSArray *categories;
-@property (retain, nonatomic) NSArray *notes;
 
 + (instancetype) sharedManager;
+- (void)getNotesWithCompletionBlock:(void (^)(NSArray * _Nonnull, NSError *error))completionBlock;
 
 @end
 

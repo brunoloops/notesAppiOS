@@ -20,9 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"NoteTableViewCell" bundle:nil] forCellReuseIdentifier:[NoteTableViewCell identifier]];
-    DataManager *dataManager = [DataManager sharedManager];
-    self.tableData = dataManager.notes;
-    
+    [self refreshTable];
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
     
@@ -34,9 +32,17 @@
 }
 - (void)refreshTable {
     DataManager *dataManager = [DataManager sharedManager];
-    self.tableData = dataManager.notes;
-    [self.refreshControl endRefreshing];
-    [self.tableView reloadData];
+    __weak ViewController *weakSelf = self;
+    [dataManager getNotesWithCompletionBlock:^(NSArray * _Nonnull notes, NSError *error) {
+        if (!error) {
+            weakSelf.tableData = notes;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.tableView reloadData];
+            });
+        }
+        else
+            NSLog(@"Error retrieving data");
+    }];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
