@@ -13,17 +13,37 @@
 #import "DataManager.h"
 
 @interface ViewController ()
-
-    @property NSArray<Note *> *tableData;
+@property (nonatomic, strong) NSArray<Note *> *tableData;
 @end
 
 @implementation ViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"NoteTableViewCell" bundle:nil] forCellReuseIdentifier:[NoteTableViewCell identifier]];
+    [self refreshTable];
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+    
+    if (@available(iOS 10.0, *)) {
+        self.tableView.refreshControl = self.refreshControl;
+    } else {
+        [self.tableView addSubview:self.refreshControl];
+    }
+}
+
+- (void)refreshTable {
     DataManager *dataManager = [DataManager sharedManager];
-    self.tableData = dataManager.notes;
-    [self presentLoadingWithText:@"Loading" andDismissAfterDelay:3.0];
+    __weak ViewController *weakSelf = self;
+    [dataManager getNotesWithCompletionBlock:^(NSArray * _Nonnull notes, NSError *error) {
+        if (!error) {
+            weakSelf.tableData = notes;
+            [weakSelf.refreshControl endRefreshing];
+            [weakSelf.tableView reloadData];
+        }
+        else
+            NSLog(@"Error retrieving data");
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
