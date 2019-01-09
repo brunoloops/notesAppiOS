@@ -41,8 +41,14 @@
             [weakSelf.refreshControl endRefreshing];
             [weakSelf.tableView reloadData];
         }
-        else
-            NSLog(@"Error retrieving data");
+        else {
+            UIViewController *alertViewController = [UIAlertController alertControllerWithTitle:@"Error reading data" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            [self presentViewController:alertViewController animated:TRUE completion:^{
+                [alertViewController dismissViewControllerAnimated:TRUE completion:nil];
+                [weakSelf.refreshControl endRefreshing];
+            }];
+            
+        }
     }];
 }
 

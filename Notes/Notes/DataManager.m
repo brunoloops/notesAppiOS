@@ -32,6 +32,7 @@
     }
     return self;
 }
+
 - (void)getNotesWithCompletionBlock:(void (^)(NSArray * nullable, NSError *error))completionBlock {
     NSString *urlAsString = [NSString stringWithFormat:@"https://s3.amazonaws.com/kezmo.assets/sandbox/notes.json"];
     
@@ -49,18 +50,22 @@
                                                                                       error:&error];
                     if (!error) {
                         NSArray *notes = [self parseJsonData:notesDictionary];
-                        
                         dispatch_async(dispatch_get_main_queue(), ^{
                             completionBlock(notes, nil);
                         });
                     } else {
-                        completionBlock(nil, error);
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            completionBlock(nil, error);
+                        });
                     }
                 } else {
-                    completionBlock(nil, error);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completionBlock(nil, error);
+                    });
                 }
             }] resume];
 }
+
 - (NSArray *)parseJsonData:(NSDictionary *)notesDictionary{
     NSMutableArray <Category *> *categoryArray = [NSMutableArray new];
     NSArray *parseNotes = [notesDictionary objectForKey:@"notes"];
