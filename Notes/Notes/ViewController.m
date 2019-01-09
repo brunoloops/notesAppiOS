@@ -11,7 +11,6 @@
 #import "Category.h"
 #import "NoteTableViewCell.h"
 #import "DataManager.h"
-#import <JGProgressHUD.h>
 
 @interface ViewController ()
 
@@ -24,10 +23,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"NoteTableViewCell" bundle:nil] forCellReuseIdentifier:[NoteTableViewCell identifier]];
     DataManager *dataManager = [DataManager sharedManager];
     self.tableData = dataManager.notes;
-    JGProgressHUD *HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
-    HUD.textLabel.text = @"Loading";
-    [HUD showInView:self.view];
-    [HUD dismissAfterDelay:3.0];
+    [self presentLoadingWithText:@"Loading" andDismissAfterDelay:3.0];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

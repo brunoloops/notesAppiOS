@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E142CCB1D4E223022C86866 /* libPods-Notes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4FCCA9DDC39E8D4E5CD445 /* libPods-Notes.a */; };
+		848798E121E648C000A1FE15 /* UIViewController+Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = 848798E021E648C000A1FE15 /* UIViewController+Alerts.m */; };
 		8493654421E4F4B600E63BEF /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493654321E4F4B600E63BEF /* DataManager.m */; };
 		84F3C0F721E3A2320058B573 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3C0F621E3A2320058B573 /* AppDelegate.m */; };
 		84F3C0FA21E3A2320058B573 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3C0F921E3A2320058B573 /* ViewController.m */; };
@@ -44,6 +45,8 @@
 /* Begin PBXFileReference section */
 		28386E623299265DBD2D13E0 /* Pods-Notes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Notes/Pods-Notes.release.xcconfig"; sourceTree = "<group>"; };
 		7AC77A354804BDAB62CB8D84 /* Pods-Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Notes/Pods-Notes.debug.xcconfig"; sourceTree = "<group>"; };
+		848798DF21E648C000A1FE15 /* UIViewController+Alerts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alerts.h"; sourceTree = "<group>"; };
+		848798E021E648C000A1FE15 /* UIViewController+Alerts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alerts.m"; sourceTree = "<group>"; };
 		8493654221E4F4B600E63BEF /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		8493654321E4F4B600E63BEF /* DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		84F3C0F221E3A2320058B573 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +146,8 @@
 				84F3C13421E3D1180058B573 /* NoteTableViewCell.m */,
 				8493654221E4F4B600E63BEF /* DataManager.h */,
 				8493654321E4F4B600E63BEF /* DataManager.m */,
+				848798DF21E648C000A1FE15 /* UIViewController+Alerts.h */,
+				848798E021E648C000A1FE15 /* UIViewController+Alerts.m */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -370,6 +375,7 @@
 				84F3C13521E3D1180058B573 /* NoteTableViewCell.m in Sources */,
 				84F3C0F721E3A2320058B573 /* AppDelegate.m in Sources */,
 				84F3C12B21E3A5AC0058B573 /* Note.m in Sources */,
+				848798E121E648C000A1FE15 /* UIViewController+Alerts.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
