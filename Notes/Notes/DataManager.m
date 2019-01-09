@@ -32,7 +32,7 @@
     }
     return self;
 }
-- (void)getNotesWithCompletionBlock:(void (^)(NSArray * _Nonnull, NSError *error))completionBlock {
+- (void)getNotesWithCompletionBlock:(void (^)(NSArray * nullable, NSError *error))completionBlock {
     NSString *urlAsString = [NSString stringWithFormat:@"https://s3.amazonaws.com/kezmo.assets/sandbox/notes.json"];
     
     NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
@@ -44,59 +44,48 @@
             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                 if (!error) {
                     // Success
-                    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                        completionBlock([self parseJsonData:data], nil);
+                    NSDictionary *notesDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                                    options:0
+                                                                                      error:&error];
+                    if (!error) {
+                        NSArray *notes = [self parseJsonData:notesDictionary];
                         
-                    }  else {
-                        completionBlock([NSArray new], [NSError errorWithDomain:NSURLErrorDomain code:0 userInfo:NULL]);
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            completionBlock(notes, nil);
+                        });
+                    } else {
+                        completionBlock(nil, error);
                     }
                 } else {
-                    // Fail
-                    completionBlock([NSArray new], error);
+                    completionBlock(nil, error);
                 }
             }] resume];
 }
-- (NSArray *)parseJsonData:(NSData *)jsonData{
-    //convert JSON NSData to a usable NSDictionary
-    NSError *error;
-    NSDictionary *notesDictionary = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                                    options:0
-                                                                      error:&error];
+- (NSArray *)parseJsonData:(NSDictionary *)notesDictionary{
+    NSMutableArray <Category *> *categoryArray = [NSMutableArray new];
+    NSArray *parseNotes = [notesDictionary objectForKey:@"notes"];
+    NSArray *parseCategories = [notesDictionary objectForKey:@"categories"];
+    for (NSDictionary *element in parseCategories){
+        NSString *categoryId = [element objectForKey:@"id"];
+        NSString *categoryTitle = [element objectForKey:@"title"];
+        NSDate *categoryCreatedDate = [NSDate dateWithTimeIntervalSince1970:[[element objectForKey:@"createdDate"] integerValue]];
+        Category *category = [[Category alloc] initWithId:categoryId title:categoryTitle andCreatedDate:categoryCreatedDate];
+        [categoryArray addObject:category];
+    }
+    self.categories = [NSArray arrayWithArray:categoryArray];
     
-    if (error) {
-        NSLog(@"Something went wrong! %@", error.localizedDescription);
+    NSMutableArray <Note *> *noteArray = [NSMutableArray new];
+    for (NSDictionary *element in parseNotes){
+        NSString *noteId = [element objectForKey:@"id"];
+        NSString *noteTitle = [element objectForKey:@"title"];
+        NSString *noteContent = [element objectForKey:@"content"];
+        NSString *noteCategoryId = [element objectForKey:@"categoryId"];
+        NSDate *noteCreatedDate = [NSDate dateWithTimeIntervalSince1970:[[element objectForKey:@"createdDate"] integerValue]];
+        Category *categoryNote = [self categoryById:noteCategoryId];
+        Note *note = [[Note alloc] initWithId: noteId createdDate:noteCreatedDate  title:noteTitle content:noteContent categoryTitle:categoryNote.title andCategoryId:noteCategoryId];
+        [noteArray addObject:note];
     }
-    else {
-        NSMutableArray <Category *> *categoryArray = [NSMutableArray new];
-        NSArray *parseNotes = [notesDictionary objectForKey:@"notes"];
-        NSArray *parseCategories = [notesDictionary objectForKey:@"categories"];
-        for (NSDictionary *element in parseCategories){
-            NSString *categoryId = [element objectForKey:@"id"];
-            NSString *categoryTitle = [element objectForKey:@"title"];
-            NSDate *categoryCreatedDate = [NSDate dateWithTimeIntervalSince1970:[[element objectForKey:@"createdDate"] integerValue]];
-            Category *category = [[Category alloc] initWithId:categoryId title:categoryTitle andCreatedDate:categoryCreatedDate];
-            [categoryArray addObject:category];
-        }
-        self.categories = [NSArray arrayWithArray:categoryArray];
-        
-        NSMutableArray <Note *> *noteArray = [NSMutableArray new];
-        for (NSDictionary *element in parseNotes){
-            NSString *noteId = [element objectForKey:@"id"];
-            NSString *noteTitle = [element objectForKey:@"title"];
-            NSString *noteContent = [element objectForKey:@"content"];
-            NSString *noteCategoryId = [element objectForKey:@"categoryId"];
-            NSDate *noteCreatedDate = [NSDate dateWithTimeIntervalSince1970:[[element objectForKey:@"createdDate"] integerValue]];
-            __block Category *categoryNote;
-            [categoryArray enumerateObjectsUsingBlock:^(Category * _Nonnull category, NSUInteger idx, BOOL * _Nonnull stop) {
-                if ([category.identifier isEqualToString:noteCategoryId]){
-                    categoryNote = category;
-                }
-            }];
-            Note *note = [[Note alloc] initWithId: noteId createdDate:noteCreatedDate  title:noteTitle content:noteContent categoryTitle:categoryNote.title andCategoryId:noteCategoryId];
-            [noteArray addObject:note];
-        }
-        self.notes = [NSArray arrayWithArray:noteArray];
-    }
+    self.notes = [NSArray arrayWithArray:noteArray];
     return self.notes;
 }
 

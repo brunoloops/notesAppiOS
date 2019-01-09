@@ -13,10 +13,11 @@
 #import "DataManager.h"
 
 @interface ViewController ()
-    @property (nonatomic, strong) NSArray<Note *> *tableData;
+@property (nonatomic, strong) NSArray<Note *> *tableData;
 @end
 
 @implementation ViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"NoteTableViewCell" bundle:nil] forCellReuseIdentifier:[NoteTableViewCell identifier]];
@@ -30,20 +31,21 @@
         [self.tableView addSubview:self.refreshControl];
     }
 }
+
 - (void)refreshTable {
     DataManager *dataManager = [DataManager sharedManager];
     __weak ViewController *weakSelf = self;
     [dataManager getNotesWithCompletionBlock:^(NSArray * _Nonnull notes, NSError *error) {
         if (!error) {
             weakSelf.tableData = notes;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf.tableView reloadData];
-            });
+            [weakSelf.refreshControl endRefreshing];
+            [weakSelf.tableView reloadData];
         }
         else
             NSLog(@"Error retrieving data");
     }];
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     if ([self.tableData count]) {

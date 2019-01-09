@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 + (instancetype) sharedManager;
-- (void)getNotesWithCompletionBlock:(void (^)(NSArray * _Nonnull, NSError *error))completionBlock;
+- (void)getNotesWithCompletionBlock:(void (^)(NSArray * nullable, NSError *error))completionBlock;
 
 @end
 
