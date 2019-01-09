@@ -11,6 +11,7 @@
 #import "Category.h"
 #import "NoteTableViewCell.h"
 #import "DataManager.h"
+#import "Notes-Swift.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) NSArray<Note *> *tableData;
@@ -92,11 +93,22 @@
     cell.titleLabel.text = note.title;
     cell.contentLabel.text = note.content;
     cell.contentLabel.textContainer.maximumNumberOfLines = 2;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateStyle = NSDateFormatterLongStyle;
-    cell.createdDateLabel.text = [formatter stringFromDate:note.createdDate];
+    cell.createdDateLabel.text = [note readableCreatedDate];
     cell.categoryLabel.text = note.categoryTitle;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"NoteDetail" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if  ([segue.identifier isEqualToString: @"NoteDetail"]) {
+        NoteDetailsViewController *destination = segue.destinationViewController;
+        NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+        Note *note = [self.tableData objectAtIndex:indexPath.item];
+        destination.note = note;
+    }
 }
 
 @end

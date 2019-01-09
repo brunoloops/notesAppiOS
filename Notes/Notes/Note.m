@@ -30,4 +30,12 @@
     }
     return self;
 }
+
+- (NSString *)readableCreatedDate {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateStyle = NSDateFormatterLongStyle;
+    return [formatter stringFromDate:self.createdDate];
+}
+
+
 @end
