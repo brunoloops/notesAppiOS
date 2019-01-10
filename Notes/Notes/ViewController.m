@@ -36,7 +36,7 @@
 - (void)refreshTable {
     DataManager *dataManager = [DataManager sharedManager];
     __weak ViewController *weakSelf = self;
-    [dataManager getNotesWithCompletionBlock:^(NSArray * _Nonnull notes, NSError *error) {
+    [dataManager refreshNotesWithCompletionBlock:^(NSArray * _Nonnull notes, NSError *error) {
         if (!error) {
             weakSelf.tableData = notes;
             [weakSelf.refreshControl endRefreshing];
@@ -51,6 +51,12 @@
             
         }
     }];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tableData = [[DataManager sharedManager] getNotes];
+    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

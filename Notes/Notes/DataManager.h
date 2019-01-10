@@ -14,9 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DataManager : NSObject
 
-
 + (instancetype) sharedManager;
-- (void)getNotesWithCompletionBlock:(void (^)(NSArray * nullable, NSError *error))completionBlock;
+
+- (void)refreshNotesWithCompletionBlock:(void (^)(NSArray * nullable, NSError *error))completionBlock;
+- (NSArray <Category *> *)getCategories;
+- (NSArray <Note *> *)getNotes;
+- (Category *)getCategoryByTitle:(NSString *)title;
+- (void)addNote:(Note *)note;
 
 @end
 

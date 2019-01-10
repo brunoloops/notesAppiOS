@@ -17,9 +17,10 @@ class NoteDetailsViewController : UIViewController {
     @IBOutlet weak var createdDateLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
     @objc var note: Note?
+    var mode: Int! = 0;
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if (self.note != nil) {
             let note: Note! = self.note!
             self.navigationTitle.title = note.title
@@ -32,5 +33,11 @@ class NoteDetailsViewController : UIViewController {
     }
     @IBAction func backButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if  (segue.identifier == "NoteEdit") {
+            let destination = segue.destination as! NoteEditViewController;
+            destination.note = note;
+        }
     }
 }
