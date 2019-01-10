@@ -31,9 +31,11 @@ class NoteDetailsViewController : UIViewController {
             self.navigationTitle.title = "Note not found"
         }
     }
+    
     @IBAction func backButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if  (segue.identifier == "NoteEdit") {
             let destination = segue.destination as! NoteEditViewController;

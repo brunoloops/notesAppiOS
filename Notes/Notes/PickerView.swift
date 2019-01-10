@@ -46,13 +46,10 @@ class PickerView : UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
         return pickerData.count
     }
     
-    // This function sets the text of the picker view to the content of the "salutations" array
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
     
-    // When user selects an option, this function will set the text of the text field to reflect
-    // the selected option.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickerTextField.text = pickerData[row]
     }
