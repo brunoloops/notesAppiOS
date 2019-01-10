@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSArray <Note *> *)getNotes;
 - (Category *)getCategoryByTitle:(NSString *)title;
 - (void)addNote:(Note *)note;
+- (void)editNote:(Note *)note;
 
 @end
 

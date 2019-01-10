@@ -13,7 +13,7 @@ class PickerView : UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var pickerData : [String]!
     var pickerTextField : UITextField!
-    
+        
     init(pickerData: [String], dropdownField: UITextField) {
         super.init(frame: CGRect.zero)
         
@@ -23,14 +23,12 @@ class PickerView : UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
         self.delegate = self
         self.dataSource = self
         
-        DispatchQueue.main.async {
-            if (pickerData.count != 0) {
-                self.pickerTextField.text = self.pickerData[0]
-                self.pickerTextField.isEnabled = true
-            } else {
-                self.pickerTextField.text = nil
-                self.pickerTextField.isEnabled = false
-            }
+        if (pickerData.count != 0) {
+            self.pickerTextField.text = self.pickerData[0]
+            self.pickerTextField.isEnabled = true
+        } else {
+            self.pickerTextField.text = nil
+            self.pickerTextField.isEnabled = false
         }
     }
     

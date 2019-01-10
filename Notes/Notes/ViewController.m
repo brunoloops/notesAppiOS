@@ -31,6 +31,7 @@
     } else {
         [self.tableView addSubview:self.refreshControl];
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"notes" object:nil];
 }
 
 - (void)refreshTable {
@@ -53,8 +54,7 @@
     }];
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void) reloadData {
     self.tableData = [[DataManager sharedManager] getNotes];
     [self.tableView reloadData];
 }
@@ -116,5 +116,6 @@
         destination.note = note;
     }
 }
+
 
 @end

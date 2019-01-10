@@ -37,21 +37,21 @@
                         <barButtonItem key="rightBarButtonItem" title="Add" id="Qf4-8H-mSR">
                             <connections>
                                 <action selector="addAction:" destination="lqY-fd-6Yb" id="vqa-oX-Kus"/>
-                                <segue destination="lQy-bZ-bhb" kind="popoverPresentation" popoverAnchorBarButtonItem="Qf4-8H-mSR" id="Hvz-OE-CWa">
+                                <segue destination="tET-xw-L9b" kind="popoverPresentation" popoverAnchorBarButtonItem="Qf4-8H-mSR" id="Hvz-OE-CWa">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="CP5-Bk-CtM" kind="showDetail" identifier="NoteDetail" id="GLc-vz-gff"/>
+                        <segue destination="CP5-Bk-CtM" kind="show" identifier="NoteDetail" id="GLc-vz-gff"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMB-bj-8dy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="223" y="78"/>
         </scene>
-        <!--Note Details View Controller-->
+        <!--Notes-->
         <scene sceneID="PcL-xj-dGw">
             <objects>
                 <viewController id="CP5-Bk-CtM" customClass="NoteDetailsViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,39 +60,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRV-F3-lZk">
-                                <rect key="frame" x="16" y="102" width="343" height="545"/>
+                                <rect key="frame" x="16" y="100.5" width="343" height="546.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mw0-sZ-ZLB">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="eJe-B0-BDd">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="IkG-av-Y0T">
-                                            <connections>
-                                                <action selector="backButtonAction:" destination="CP5-Bk-CtM" id="I28-KU-5Vz"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="zo6-GX-BUS">
-                                            <connections>
-                                                <segue destination="lQy-bZ-bhb" kind="popoverPresentation" identifier="NoteEdit" popoverAnchorBarButtonItem="zo6-GX-BUS" id="ssL-k8-Xmi">
-                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                </segue>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFU-Rv-JOq">
-                                <rect key="frame" x="317" y="74" width="42" height="21"/>
+                                <rect key="frame" x="317" y="72" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8R3-A3-fXA">
-                                <rect key="frame" x="16" y="74" width="42" height="20.5"/>
+                                <rect key="frame" x="16" y="72" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -101,27 +82,32 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ROn-rS-fLY" firstAttribute="trailing" secondItem="hRV-F3-lZk" secondAttribute="trailing" constant="16" id="1pS-DJ-1JY"/>
-                            <constraint firstItem="Mw0-sZ-ZLB" firstAttribute="leading" secondItem="DIb-iM-OJb" secondAttribute="leading" id="Cdc-mk-qsR"/>
                             <constraint firstItem="8R3-A3-fXA" firstAttribute="leading" secondItem="ROn-rS-fLY" secondAttribute="leading" constant="16" id="G6L-vZ-3vO"/>
-                            <constraint firstAttribute="trailing" secondItem="Mw0-sZ-ZLB" secondAttribute="trailing" id="GGR-RH-OgS"/>
-                            <constraint firstItem="Mw0-sZ-ZLB" firstAttribute="top" secondItem="ROn-rS-fLY" secondAttribute="top" id="RYb-gq-4RC"/>
                             <constraint firstItem="ROn-rS-fLY" firstAttribute="trailing" secondItem="XFU-Rv-JOq" secondAttribute="trailing" constant="16" id="ZWJ-ef-5Zc"/>
-                            <constraint firstItem="8R3-A3-fXA" firstAttribute="top" secondItem="Mw0-sZ-ZLB" secondAttribute="bottom" constant="10" id="cQW-Cv-0hA"/>
-                            <constraint firstItem="XFU-Rv-JOq" firstAttribute="top" secondItem="Mw0-sZ-ZLB" secondAttribute="bottom" constant="10" id="drX-6d-sTB"/>
+                            <constraint firstItem="XFU-Rv-JOq" firstAttribute="top" secondItem="ROn-rS-fLY" secondAttribute="top" constant="8" id="dQ3-Hu-i1N"/>
                             <constraint firstAttribute="bottom" secondItem="hRV-F3-lZk" secondAttribute="bottom" constant="20" symbolic="YES" id="lEm-HQ-V5X"/>
+                            <constraint firstItem="8R3-A3-fXA" firstAttribute="top" secondItem="ROn-rS-fLY" secondAttribute="top" constant="8" id="ot6-hj-HFj"/>
                             <constraint firstItem="hRV-F3-lZk" firstAttribute="leading" secondItem="ROn-rS-fLY" secondAttribute="leading" constant="16" id="qFc-q2-eCH"/>
                             <constraint firstItem="hRV-F3-lZk" firstAttribute="top" secondItem="8R3-A3-fXA" secondAttribute="bottom" constant="7.5" id="qiQ-FQ-ngz"/>
-                            <constraint firstItem="Mw0-sZ-ZLB" firstAttribute="centerX" secondItem="hRV-F3-lZk" secondAttribute="centerX" id="wu6-rS-pw2"/>
                             <constraint firstItem="XFU-Rv-JOq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8R3-A3-fXA" secondAttribute="trailing" constant="8" symbolic="YES" id="xft-TZ-fcb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ROn-rS-fLY"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Notes" id="W8o-0x-GbW">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="zo6-GX-BUS">
+                            <connections>
+                                <segue destination="tET-xw-L9b" kind="popoverPresentation" identifier="NoteEdit" popoverAnchorBarButtonItem="zo6-GX-BUS" id="ssL-k8-Xmi">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="categoryLabel" destination="8R3-A3-fXA" id="cbT-4j-0AG"/>
                         <outlet property="contentTextView" destination="hRV-F3-lZk" id="xxT-7Z-oxC"/>
                         <outlet property="createdDateLabel" destination="XFU-Rv-JOq" id="32D-LJ-zmZ"/>
-                        <outlet property="navigationBar" destination="Mw0-sZ-ZLB" id="OtX-Oy-Jyt"/>
-                        <outlet property="navigationTitle" destination="eJe-B0-BDd" id="at2-aH-6hC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ca-kg-4gD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -136,25 +122,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ytt-dt-cmr">
-                                <rect key="frame" x="0.0" y="20" width="375" height="14"/>
-                                <items>
-                                    <navigationItem title="Title" id="Otd-nu-MwJ">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="OEN-qR-3OL">
-                                            <connections>
-                                                <action selector="cancelAction:" destination="lQy-bZ-bhb" id="gjy-XO-MTZ"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" id="E6H-J4-O5D" userLabel="Save">
-                                            <connections>
-                                                <action selector="saveAction:" destination="lQy-bZ-bhb" id="f41-YU-8Vh"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bPb-Zh-lFs">
-                                <rect key="frame" x="0.0" y="54" width="359" height="613"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bPb-Zh-lFs">
+                                <rect key="frame" x="0.0" y="92" width="359" height="575"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Xfs-Vk-KXb">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="25"/>
@@ -177,7 +146,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JZS-50-Lrd">
-                                        <rect key="frame" x="0.0" y="33" width="359" height="25"/>
+                                        <rect key="frame" x="0.0" y="29" width="359" height="25"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEr-aV-Tkf">
                                                 <rect key="frame" x="0.0" y="0.0" width="70.5" height="25"/>
@@ -197,7 +166,7 @@
                                         </constraints>
                                     </stackView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wau-HF-xou">
-                                        <rect key="frame" x="0.0" y="66" width="359" height="547"/>
+                                        <rect key="frame" x="0.0" y="58" width="359" height="517"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -208,26 +177,34 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ytt-dt-cmr" firstAttribute="top" secondItem="d8C-Tt-EMk" secondAttribute="top" id="3IF-Te-qET"/>
-                            <constraint firstItem="bPb-Zh-lFs" firstAttribute="top" secondItem="Ytt-dt-cmr" secondAttribute="bottom" constant="20" id="7uV-l0-rJS"/>
                             <constraint firstItem="d8C-Tt-EMk" firstAttribute="bottom" secondItem="bPb-Zh-lFs" secondAttribute="bottom" id="ImE-88-TJO"/>
                             <constraint firstItem="bPb-Zh-lFs" firstAttribute="leading" secondItem="d8C-Tt-EMk" secondAttribute="leading" id="RA0-p0-uHK"/>
-                            <constraint firstItem="Ytt-dt-cmr" firstAttribute="leading" secondItem="d8C-Tt-EMk" secondAttribute="leading" id="XO8-eu-DaK"/>
-                            <constraint firstItem="Ytt-dt-cmr" firstAttribute="trailing" secondItem="d8C-Tt-EMk" secondAttribute="trailing" id="fet-FM-lVS"/>
+                            <constraint firstItem="bPb-Zh-lFs" firstAttribute="top" secondItem="d8C-Tt-EMk" secondAttribute="top" constant="28" id="TgR-az-ApL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bPb-Zh-lFs" secondAttribute="trailing" id="pOb-Ze-6Zq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d8C-Tt-EMk"/>
                     </view>
+                    <navigationItem key="navigationItem" id="hHY-fz-1Zv">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="OEN-qR-3OL">
+                            <connections>
+                                <action selector="cancelAction:" destination="lQy-bZ-bhb" id="gjy-XO-MTZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="E6H-J4-O5D" userLabel="Save">
+                            <connections>
+                                <action selector="saveAction:" destination="lQy-bZ-bhb" id="f41-YU-8Vh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="categoryTextField" destination="EQe-EM-Mpg" id="xOw-F3-cWb"/>
                         <outlet property="contentTextView" destination="wau-HF-xou" id="lVH-rl-jHn"/>
-                        <outlet property="navigationTitle" destination="Otd-nu-MwJ" id="LeP-N3-PWq"/>
                         <outlet property="titleTextField" destination="pPp-NH-zfP" id="w9W-bC-p9x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVW-DH-fiw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1161" y="819"/>
+            <point key="canvasLocation" x="2100" y="818.14092953523243"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yME-Bv-9zm">
@@ -245,8 +222,26 @@
             </objects>
             <point key="canvasLocation" x="-594" y="78"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KPt-Cu-1Bo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tET-xw-L9b" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Y5W-pg-q29">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lQy-bZ-bhb" kind="relationship" relationship="rootViewController" id="U66-Dw-oxj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VPq-Ha-0ks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1160.8" y="818.14092953523243"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Hvz-OE-CWa"/>
+        <segue reference="ssL-k8-Xmi"/>
     </inferredMetricsTieBreakers>
 </document>

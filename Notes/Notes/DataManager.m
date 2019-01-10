@@ -112,17 +112,36 @@
     return categoryNote;}
 
 - (Category *)categoryById:(NSString *)categoryId{
-     __block Category *categoryNote;
-     [self.categories enumerateObjectsUsingBlock:^(Category * _Nonnull category, NSUInteger idx, BOOL * _Nonnull stop) {
-         if ([category.identifier isEqualToString:categoryId]){
-             categoryNote = category;
-         }
-     }];
-     return categoryNote;
- }
+    __block Category *categoryFound;
+    [self.categories enumerateObjectsUsingBlock:^(Category * _Nonnull category, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([category.identifier isEqualToString:categoryId]){
+            categoryFound = category;
+        }
+    }];
+    return categoryFound;
+}
+
+- (Note *)noteById:(NSString *)noteId{
+    __block Note *noteFound;
+    [self.notes enumerateObjectsUsingBlock:^(Note * _Nonnull note, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([note.identifier isEqualToString:noteId]){
+            noteFound = note;
+        }
+    }];
+    return noteFound;
+}
 
 - (void)addNote:(Note *)note {
     self.notes = [self.notes arrayByAddingObject:note];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"notes" object:note];
+}
+
+- (void)editNote:(Note *)note {
+    NSMutableArray *provisionalNotes = [NSMutableArray arrayWithArray:self.notes];
+    Note *tmpNote = [self noteById:note.identifier];
+    [provisionalNotes removeObject:tmpNote];
+    [provisionalNotes insertObject:note atIndex:0];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"notes" object:note];
 }
 
 @end

@@ -11,7 +11,6 @@ import UIKit
 
 class NoteEditViewController : UIViewController {
     
-    @IBOutlet weak var navigationTitle: UINavigationItem!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
@@ -25,20 +24,16 @@ class NoteEditViewController : UIViewController {
         }
         self.categoryTextField.loadDropdownData(data: categoriesTitles)
         self.categoryTextField.text = categories[0].title
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         if (note != nil) {
-            self.navigationTitle.title = "Edit Note"
+            self.navigationItem.title = "Edit Note"
             self.titleTextField.text = note!.title
             self.categoryTextField.text = note!.categoryTitle
             self.contentTextView.text = note!.content
         }
         else {
-            self.navigationTitle.title = "Add Note"
+            self.navigationItem.title = "Add Note"
             self.titleTextField.text = ""
-            self.categoryTextField.text = ""
             self.contentTextView.text = ""
         }
     }
@@ -50,10 +45,11 @@ class NoteEditViewController : UIViewController {
     @IBAction func saveAction(_ sender: Any) {
         let category = DataManager.shared().getCategoryByTitle(self.categoryTextField.text!)
         if (self.note != nil) {
-            self.note?.title = self.titleTextField.text!
-            self.note?.categoryTitle = category.title
-            self.note?.categoryId = category.identifier
-            self.note?.content = self.contentTextView.text
+            self.note!.title = self.titleTextField.text!
+            self.note!.categoryTitle = category.title
+            self.note!.categoryId = category.identifier
+            self.note!.content = self.contentTextView.text
+            DataManager.shared().edit(self.note!);
         } else {
             self.note = Note(title: self.titleTextField.text!, content: self.contentTextView.text!, categoryTitle: category.title, andCategoryId: category.identifier)
             DataManager.shared().add(note!)
