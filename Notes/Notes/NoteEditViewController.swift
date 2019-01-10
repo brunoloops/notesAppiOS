@@ -16,6 +16,7 @@ class NoteEditViewController : UIViewController {
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     var note: Note?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let categories = DataManager.shared().getCategories()
@@ -23,7 +24,9 @@ class NoteEditViewController : UIViewController {
             return category.title;
         }
         self.categoryTextField.loadDropdownData(data: categoriesTitles)
+        self.categoryTextField.text = categories[0].title
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if (note != nil) {
@@ -39,9 +42,11 @@ class NoteEditViewController : UIViewController {
             self.contentTextView.text = ""
         }
     }
+    
     @IBAction func cancelAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func saveAction(_ sender: Any) {
         let category = DataManager.shared().getCategoryByTitle(self.categoryTextField.text!)
         if (self.note != nil) {
@@ -55,4 +60,5 @@ class NoteEditViewController : UIViewController {
         }
         self.dismiss(animated: true, completion: nil)
     }
+    
 }
