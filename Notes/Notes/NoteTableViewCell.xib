@@ -58,7 +58,9 @@
                     <constraint firstItem="Lfo-c3-StU" firstAttribute="top" secondItem="8r3-m4-FhZ" secondAttribute="bottom" id="y9b-EC-R2h"/>
                 </constraints>
             </tableViewCellContentView>
-            <accessibility key="accessibilityConfiguration" identifier="noteTableViewCell"/>
+            <accessibility key="accessibilityConfiguration" identifier="noteTableViewCell">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
             <connections>
                 <outlet property="categoryLabel" destination="EcR-IM-D07" id="DNW-3K-Wbb"/>
                 <outlet property="contentLabel" destination="Lfo-c3-StU" id="ovN-Fs-Teb"/>

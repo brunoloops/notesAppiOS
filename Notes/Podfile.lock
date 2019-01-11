@@ -3,10 +3,13 @@ PODS:
   - KIF (3.7.4):
     - KIF/Core (= 3.7.4)
   - KIF/Core (3.7.4)
+  - KIF/IdentifierTests (3.7.4):
+    - KIF/Core
 
 DEPENDENCIES:
   - JGProgressHUD
   - KIF
+  - KIF/IdentifierTests
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -17,6 +20,6 @@ SPEC CHECKSUMS:
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   KIF: f3d01c109ee9d1cfe6b0f2bb2aa278e807e971e2
 
-PODFILE CHECKSUM: 701b26b99250a8cf04c62f5225258f3c05c1477e
+PODFILE CHECKSUM: e511f7d3a18743b25c52cabf78787fdea010316a
 
 COCOAPODS: 1.5.3

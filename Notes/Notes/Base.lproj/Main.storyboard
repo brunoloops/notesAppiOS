@@ -28,6 +28,10 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessiblityIdentifier" value="NotesTableView"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="lqY-fd-6Yb" id="psh-Hx-cy7"/>
                             <outlet property="delegate" destination="lqY-fd-6Yb" id="7m8-eW-flt"/>
@@ -35,6 +39,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Notes" id="Hwg-Dq-FeY">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="Qf4-8H-mSR">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Add"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="addAction:" destination="lqY-fd-6Yb" id="vqa-oX-Kus"/>
                                 <segue destination="tET-xw-L9b" kind="popoverPresentation" popoverAnchorBarButtonItem="Qf4-8H-mSR" id="Hvz-OE-CWa">
@@ -96,6 +104,10 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Notes" id="W8o-0x-GbW">
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="zo6-GX-BUS">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Edit"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="tET-xw-L9b" kind="popoverPresentation" identifier="NoteEdit" popoverAnchorBarButtonItem="zo6-GX-BUS" id="ssL-k8-Xmi">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -191,6 +203,10 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="E6H-J4-O5D" userLabel="Save">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Save"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="saveAction:" destination="lQy-bZ-bhb" id="f41-YU-8Vh"/>
                             </connections>

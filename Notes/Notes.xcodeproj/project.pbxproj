@@ -15,6 +15,10 @@
 		84424D4C21E8E6AA00E11BD1 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84424D4B21E8E6AA00E11BD1 /* Utils.m */; };
 		848798E121E648C000A1FE15 /* UIViewController+Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = 848798E021E648C000A1FE15 /* UIViewController+Alerts.m */; };
 		8493654421E4F4B600E63BEF /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493654321E4F4B600E63BEF /* DataManager.m */; };
+		84CA787E21E91A4700E1A5BC /* NotesUIKIFTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA787D21E91A4700E1A5BC /* NotesUIKIFTests.m */; };
+		84CA788721E91B0D00E1A5BC /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CA785E21E914BC00E1A5BC /* libKIF.a */; };
+		84CA788821E91B3E00E1A5BC /* KIFUITestActor+EXAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA787521E9185800E1A5BC /* KIFUITestActor+EXAdditions.m */; };
+		84CA788921E91D3400E1A5BC /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CA785E21E914BC00E1A5BC /* libKIF.a */; };
 		84F3C0F721E3A2320058B573 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3C0F621E3A2320058B573 /* AppDelegate.m */; };
 		84F3C0FA21E3A2320058B573 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3C0F921E3A2320058B573 /* ViewController.m */; };
 		84F3C0FD21E3A2320058B573 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F3C0FB21E3A2320058B573 /* Main.storyboard */; };
@@ -22,7 +26,6 @@
 		84F3C10221E3A2330058B573 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F3C10021E3A2330058B573 /* LaunchScreen.storyboard */; };
 		84F3C10521E3A2330058B573 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3C10421E3A2330058B573 /* main.m */; };
 		84F3C10F21E3A2330058B573 /* NotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3C10E21E3A2330058B573 /* NotesTests.m */; };
-		84F3C11A21E3A2330058B573 /* NotesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3C11921E3A2330058B573 /* NotesUITests.m */; };
 		84F3C12821E3A29A0058B573 /* notes.json in Resources */ = {isa = PBXBuildFile; fileRef = 84F3C12721E3A29A0058B573 /* notes.json */; };
 		84F3C12B21E3A5AC0058B573 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3C12A21E3A5AC0058B573 /* Note.m */; };
 		84F3C12E21E3AC960058B573 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3C12D21E3AC960058B573 /* Category.m */; };
@@ -31,14 +34,63 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		84F3C10B21E3A2330058B573 /* PBXContainerItemProxy */ = {
+		84CA785D21E914BC00E1A5BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84CA785321E914BC00E1A5BC /* KIF.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EABD46AA1857A0C700A5F081;
+			remoteInfo = KIF;
+		};
+		84CA785F21E914BC00E1A5BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84CA785321E914BC00E1A5BC /* KIF.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB60ECC1177F8C83005A041A;
+			remoteInfo = "Test Host";
+		};
+		84CA786121E914BC00E1A5BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84CA785321E914BC00E1A5BC /* KIF.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EABD46CD1857A0F300A5F081;
+			remoteInfo = "KIF Tests";
+		};
+		84CA786321E914BC00E1A5BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84CA785321E914BC00E1A5BC /* KIF.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9CC9673B1AD4B1B600576D13;
+			remoteInfo = KIFFramework;
+		};
+		84CA786521E914BC00E1A5BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84CA785321E914BC00E1A5BC /* KIF.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FAB89FFC1CAC546900C6DFC1;
+			remoteInfo = KIFFrameworkConsumer;
+		};
+		84CA786721E914BC00E1A5BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84CA785321E914BC00E1A5BC /* KIF.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FAB8A0141CAC546A00C6DFC1;
+			remoteInfo = KIFFrameworkConsumerTests;
+		};
+		84CA788021E91A4700E1A5BC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 84F3C0EA21E3A2320058B573 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 84F3C0F121E3A2320058B573;
 			remoteInfo = Notes;
 		};
-		84F3C11621E3A2330058B573 /* PBXContainerItemProxy */ = {
+		84CA788521E91A6E00E1A5BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84CA785321E914BC00E1A5BC /* KIF.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EABD46791857A0C700A5F081;
+			remoteInfo = KIF;
+		};
+		84F3C10B21E3A2330058B573 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 84F3C0EA21E3A2320058B573 /* Project object */;
 			proxyType = 1;
@@ -49,7 +101,9 @@
 
 /* Begin PBXFileReference section */
 		28386E623299265DBD2D13E0 /* Pods-Notes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Notes/Pods-Notes.release.xcconfig"; sourceTree = "<group>"; };
+		75CDB34A548D58465493EB40 /* Pods-NotesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotesUITests/Pods-NotesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7AC77A354804BDAB62CB8D84 /* Pods-Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Notes/Pods-Notes.debug.xcconfig"; sourceTree = "<group>"; };
+		7CAF7046E35831FC0EABAB36 /* libPods-NotesUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NotesUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		841EBDE621E7855E0031F735 /* UITextField+Dropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Dropdown.swift"; sourceTree = "<group>"; };
 		841EBDE821E786320031F735 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		841EBDEA21E7898B0031F735 /* NoteEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +115,12 @@
 		848798E021E648C000A1FE15 /* UIViewController+Alerts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alerts.m"; sourceTree = "<group>"; };
 		8493654221E4F4B600E63BEF /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		8493654321E4F4B600E63BEF /* DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		84CA785321E914BC00E1A5BC /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = Frameworks/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
+		84CA787421E9185800E1A5BC /* KIFUITestActor+EXAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KIFUITestActor+EXAdditions.h"; sourceTree = "<group>"; };
+		84CA787521E9185800E1A5BC /* KIFUITestActor+EXAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "KIFUITestActor+EXAdditions.m"; sourceTree = "<group>"; };
+		84CA787B21E91A4700E1A5BC /* NotesUIKIFTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesUIKIFTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84CA787D21E91A4700E1A5BC /* NotesUIKIFTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotesUIKIFTests.m; sourceTree = "<group>"; };
+		84CA787F21E91A4700E1A5BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84F3C0F221E3A2320058B573 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F3C0F521E3A2320058B573 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84F3C0F621E3A2320058B573 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -74,9 +134,6 @@
 		84F3C10A21E3A2330058B573 /* NotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F3C10E21E3A2330058B573 /* NotesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotesTests.m; sourceTree = "<group>"; };
 		84F3C11021E3A2330058B573 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84F3C11521E3A2330058B573 /* NotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		84F3C11921E3A2330058B573 /* NotesUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotesUITests.m; sourceTree = "<group>"; };
-		84F3C11B21E3A2330058B573 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84F3C12721E3A29A0058B573 /* notes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = notes.json; sourceTree = "<group>"; };
 		84F3C12921E3A5AC0058B573 /* Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
 		84F3C12A21E3A5AC0058B573 /* Note.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
@@ -86,9 +143,18 @@
 		84F3C13321E3D1180058B573 /* NoteTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoteTableViewCell.h; sourceTree = "<group>"; };
 		84F3C13421E3D1180058B573 /* NoteTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteTableViewCell.m; sourceTree = "<group>"; };
 		8B4FCCA9DDC39E8D4E5CD445 /* libPods-Notes.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Notes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		909AED4917D331C105B3D626 /* Pods-NotesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotesUITests/Pods-NotesUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		84CA787821E91A4700E1A5BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84CA788921E91D3400E1A5BC /* libKIF.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84F3C0EF21E3A2320058B573 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -101,25 +167,43 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		84F3C11221E3A2330058B573 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				84CA788721E91B0D00E1A5BC /* libKIF.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84CA785421E914BC00E1A5BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84CA785E21E914BC00E1A5BC /* libKIF.a */,
+				84CA786021E914BC00E1A5BC /* Test Host.app */,
+				84CA786221E914BC00E1A5BC /* KIF Tests - XCTest.xctest */,
+				84CA786421E914BC00E1A5BC /* KIF.framework */,
+				84CA786621E914BC00E1A5BC /* KIFFrameworkConsumer.app */,
+				84CA786821E914BC00E1A5BC /* KIFFrameworkConsumerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84CA787C21E91A4700E1A5BC /* NotesUIKIFTests */ = {
+			isa = PBXGroup;
+			children = (
+				84CA787421E9185800E1A5BC /* KIFUITestActor+EXAdditions.h */,
+				84CA787521E9185800E1A5BC /* KIFUITestActor+EXAdditions.m */,
+				84CA787D21E91A4700E1A5BC /* NotesUIKIFTests.m */,
+				84CA787F21E91A4700E1A5BC /* Info.plist */,
+			);
+			path = NotesUIKIFTests;
+			sourceTree = "<group>";
+		};
 		84F3C0E921E3A2320058B573 = {
 			isa = PBXGroup;
 			children = (
 				84F3C0F421E3A2320058B573 /* Notes */,
 				84F3C10D21E3A2330058B573 /* NotesTests */,
-				84F3C11821E3A2330058B573 /* NotesUITests */,
+				84CA787C21E91A4700E1A5BC /* NotesUIKIFTests */,
 				84F3C0F321E3A2320058B573 /* Products */,
 				B9A2040EADED0553CE1AEBF7 /* Pods */,
 				B5CF5A166E296605C8E4C1F9 /* Frameworks */,
@@ -131,7 +215,7 @@
 			children = (
 				84F3C0F221E3A2320058B573 /* Notes.app */,
 				84F3C10A21E3A2330058B573 /* NotesTests.xctest */,
-				84F3C11521E3A2330058B573 /* NotesUITests.xctest */,
+				84CA787B21E91A4700E1A5BC /* NotesUIKIFTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,19 +264,12 @@
 			path = NotesTests;
 			sourceTree = "<group>";
 		};
-		84F3C11821E3A2330058B573 /* NotesUITests */ = {
-			isa = PBXGroup;
-			children = (
-				84F3C11921E3A2330058B573 /* NotesUITests.m */,
-				84F3C11B21E3A2330058B573 /* Info.plist */,
-			);
-			path = NotesUITests;
-			sourceTree = "<group>";
-		};
 		B5CF5A166E296605C8E4C1F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84CA785321E914BC00E1A5BC /* KIF.xcodeproj */,
 				8B4FCCA9DDC39E8D4E5CD445 /* libPods-Notes.a */,
+				7CAF7046E35831FC0EABAB36 /* libPods-NotesUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -202,6 +279,8 @@
 			children = (
 				7AC77A354804BDAB62CB8D84 /* Pods-Notes.debug.xcconfig */,
 				28386E623299265DBD2D13E0 /* Pods-Notes.release.xcconfig */,
+				75CDB34A548D58465493EB40 /* Pods-NotesUITests.debug.xcconfig */,
+				909AED4917D331C105B3D626 /* Pods-NotesUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -209,6 +288,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		84CA787A21E91A4700E1A5BC /* NotesUIKIFTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84CA788221E91A4700E1A5BC /* Build configuration list for PBXNativeTarget "NotesUIKIFTests" */;
+			buildPhases = (
+				84CA787721E91A4700E1A5BC /* Sources */,
+				84CA787821E91A4700E1A5BC /* Frameworks */,
+				84CA787921E91A4700E1A5BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84CA788621E91A6E00E1A5BC /* PBXTargetDependency */,
+				84CA788121E91A4700E1A5BC /* PBXTargetDependency */,
+			);
+			name = NotesUIKIFTests;
+			productName = NotesUIKIFTests;
+			productReference = 84CA787B21E91A4700E1A5BC /* NotesUIKIFTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		84F3C0F121E3A2320058B573 /* Notes */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84F3C11E21E3A2330058B573 /* Build configuration list for PBXNativeTarget "Notes" */;
@@ -246,24 +344,6 @@
 			productReference = 84F3C10A21E3A2330058B573 /* NotesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		84F3C11421E3A2330058B573 /* NotesUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 84F3C12421E3A2330058B573 /* Build configuration list for PBXNativeTarget "NotesUITests" */;
-			buildPhases = (
-				84F3C11121E3A2330058B573 /* Sources */,
-				84F3C11221E3A2330058B573 /* Frameworks */,
-				84F3C11321E3A2330058B573 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				84F3C11721E3A2330058B573 /* PBXTargetDependency */,
-			);
-			name = NotesUITests;
-			productName = NotesUITests;
-			productReference = 84F3C11521E3A2330058B573 /* NotesUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -273,15 +353,15 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = admin;
 				TargetAttributes = {
+					84CA787A21E91A4700E1A5BC = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 84F3C0F121E3A2320058B573;
+					};
 					84F3C0F121E3A2320058B573 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
 					};
 					84F3C10921E3A2330058B573 = {
-						CreatedOnToolsVersion = 10.1;
-						TestTargetID = 84F3C0F121E3A2320058B573;
-					};
-					84F3C11421E3A2330058B573 = {
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = 84F3C0F121E3A2320058B573;
 					};
@@ -298,16 +378,74 @@
 			mainGroup = 84F3C0E921E3A2320058B573;
 			productRefGroup = 84F3C0F321E3A2320058B573 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 84CA785421E914BC00E1A5BC /* Products */;
+					ProjectRef = 84CA785321E914BC00E1A5BC /* KIF.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				84F3C0F121E3A2320058B573 /* Notes */,
 				84F3C10921E3A2330058B573 /* NotesTests */,
-				84F3C11421E3A2330058B573 /* NotesUITests */,
+				84CA787A21E91A4700E1A5BC /* NotesUIKIFTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		84CA785E21E914BC00E1A5BC /* libKIF.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKIF.a;
+			remoteRef = 84CA785D21E914BC00E1A5BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84CA786021E914BC00E1A5BC /* Test Host.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Test Host.app";
+			remoteRef = 84CA785F21E914BC00E1A5BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84CA786221E914BC00E1A5BC /* KIF Tests - XCTest.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "KIF Tests - XCTest.xctest";
+			remoteRef = 84CA786121E914BC00E1A5BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84CA786421E914BC00E1A5BC /* KIF.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = KIF.framework;
+			remoteRef = 84CA786321E914BC00E1A5BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84CA786621E914BC00E1A5BC /* KIFFrameworkConsumer.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = KIFFrameworkConsumer.app;
+			remoteRef = 84CA786521E914BC00E1A5BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84CA786821E914BC00E1A5BC /* KIFFrameworkConsumerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = KIFFrameworkConsumerTests.xctest;
+			remoteRef = 84CA786721E914BC00E1A5BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
+		84CA787921E91A4700E1A5BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84F3C0F021E3A2320058B573 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -321,13 +459,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		84F3C10821E3A2330058B573 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		84F3C11321E3A2330058B573 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -384,6 +515,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		84CA787721E91A4700E1A5BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84CA787E21E91A4700E1A5BC /* NotesUIKIFTests.m in Sources */,
+				84CA788821E91B3E00E1A5BC /* KIFUITestActor+EXAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84F3C0EE21E3A2320058B573 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -412,26 +552,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84F3C11121E3A2330058B573 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				84F3C11A21E3A2330058B573 /* NotesUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		84CA788121E91A4700E1A5BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84F3C0F121E3A2320058B573 /* Notes */;
+			targetProxy = 84CA788021E91A4700E1A5BC /* PBXContainerItemProxy */;
+		};
+		84CA788621E91A6E00E1A5BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KIF;
+			targetProxy = 84CA788521E91A6E00E1A5BC /* PBXContainerItemProxy */;
+		};
 		84F3C10C21E3A2330058B573 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 84F3C0F121E3A2320058B573 /* Notes */;
 			targetProxy = 84F3C10B21E3A2330058B573 /* PBXContainerItemProxy */;
-		};
-		84F3C11721E3A2330058B573 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 84F3C0F121E3A2320058B573 /* Notes */;
-			targetProxy = 84F3C11621E3A2330058B573 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -455,6 +592,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		84CA788321E91A4700E1A5BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NotesUIKIFTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					IOKit,
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = orangeloops.NotesUIKIFTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notes.app/Notes";
+			};
+			name = Debug;
+		};
+		84CA788421E91A4700E1A5BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NotesUIKIFTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					IOKit,
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = orangeloops.NotesUIKIFTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notes.app/Notes";
+			};
+			name = Release;
+		};
 		84F3C11C21E3A2330058B573 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -622,6 +807,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					IOKit,
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = orangeloops.NotesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -641,6 +831,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					IOKit,
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = orangeloops.NotesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -648,45 +843,18 @@
 			};
 			name = Release;
 		};
-		84F3C12521E3A2330058B573 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = NotesUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = orangeloops.NotesUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Notes;
-			};
-			name = Debug;
-		};
-		84F3C12621E3A2330058B573 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = NotesUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = orangeloops.NotesUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Notes;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		84CA788221E91A4700E1A5BC /* Build configuration list for PBXNativeTarget "NotesUIKIFTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84CA788321E91A4700E1A5BC /* Debug */,
+				84CA788421E91A4700E1A5BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		84F3C0ED21E3A2320058B573 /* Build configuration list for PBXProject "Notes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -710,15 +878,6 @@
 			buildConfigurations = (
 				84F3C12221E3A2330058B573 /* Debug */,
 				84F3C12321E3A2330058B573 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		84F3C12421E3A2330058B573 /* Build configuration list for PBXNativeTarget "NotesUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				84F3C12521E3A2330058B573 /* Debug */,
-				84F3C12621E3A2330058B573 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
