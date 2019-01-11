@@ -15,6 +15,7 @@
     if (self) {
         self.identifier = categoryId;
         self.title = title;
+        self.createdDate = [NSDate date];
     }
     return self;
 }

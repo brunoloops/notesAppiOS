@@ -29,11 +29,13 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        self.notes = [NSArray array];
+        self.categories = [NSArray array];
     }
     return self;
 }
 
-- (void)refreshNotesWithCompletionBlock:(void (^)(NSArray * nullable, NSError *error))completionBlock {
+- (void)refreshNotesWithCompletionBlock:(void (^)(NSArray * _Nullable notes, NSError * _Nullable error))completionBlock {
     NSString *urlAsString = [NSString stringWithFormat:@"https://s3.amazonaws.com/kezmo.assets/sandbox/notes.json"];
     
     NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
@@ -111,7 +113,7 @@
     }];
     return categoryNote;}
 
-- (Category *)categoryById:(NSString *)categoryId{
+- (Category *)categoryById:(NSString *)categoryId {
     __block Category *categoryFound;
     [self.categories enumerateObjectsUsingBlock:^(Category * _Nonnull category, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([category.identifier isEqualToString:categoryId]){
@@ -121,7 +123,7 @@
     return categoryFound;
 }
 
-- (Note *)noteById:(NSString *)noteId{
+- (Note *)noteById:(NSString *)noteId {
     __block Note *noteFound;
     [self.notes enumerateObjectsUsingBlock:^(Note * _Nonnull note, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([note.identifier isEqualToString:noteId]){

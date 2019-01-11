@@ -10,6 +10,7 @@
 #import "Utils.h"
 
 @implementation Note
+
 - (instancetype)initWithTitle:(NSString *)title content:(NSString *)content categoryTitle:(NSString *)categoryTitle andCategoryId:(NSString *)categoryId {
     self = [super init];
     if (self) {

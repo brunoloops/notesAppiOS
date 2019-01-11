@@ -19,10 +19,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype) sharedManager;
 
-- (void)refreshNotesWithCompletionBlock:(void (^)(NSArray * nullable, NSError *error))completionBlock;
+- (void)refreshNotesWithCompletionBlock:(void (^)(NSArray * _Nullable notes, NSError * _Nullable error))completionBlock;
 - (NSArray <Category *> *)getCategories;
 - (NSArray <Note *> *)getNotes;
 - (Category *)getCategoryByTitle:(NSString *)title;
+- (Category *)categoryById:(NSString *)categoryId;
+- (Note *)noteById:(NSString *)noteId;
 - (void)addNote:(Note *)note;
 - (void)editNote:(Note *)note;
 

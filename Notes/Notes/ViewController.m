@@ -40,7 +40,7 @@
 - (void)refreshTable {
     DataManager *dataManager = [DataManager sharedManager];
     __weak ViewController *weakSelf = self;
-    [dataManager refreshNotesWithCompletionBlock:^(NSArray * _Nonnull notes, NSError *error) {
+    [dataManager refreshNotesWithCompletionBlock:^(NSArray * _Nullable notes, NSError * _Nullable error) {
         if (!error) {
             weakSelf.tableData = notes;
             [weakSelf.refreshControl endRefreshing];

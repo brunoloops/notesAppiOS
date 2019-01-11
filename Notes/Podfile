@@ -1,3 +1,4 @@
 target 'Notes' do
     pod 'JGProgressHUD'
+    pod 'KIF'
 end
