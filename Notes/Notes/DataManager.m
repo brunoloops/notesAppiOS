@@ -133,7 +133,7 @@
 
 - (void)addNote:(Note *)note {
     self.notes = [self.notes arrayByAddingObject:note];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"notes" object:note];
+    [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNotesNotificationName] object:note];
 }
 
 - (void)editNote:(Note *)note {
@@ -141,7 +141,16 @@
     Note *tmpNote = [self noteById:note.identifier];
     [provisionalNotes removeObject:tmpNote];
     [provisionalNotes insertObject:note atIndex:0];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"notes" object:note];
+    [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNoteNotificationNameForNote:note] object:note];
+    [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNotesNotificationName] object:note];
+}
+
++ (NSString *)updateNoteNotificationNameForNote:(Note *)note {
+    return [@"UpdateNote_" stringByAppendingString:note.identifier];
+}
+
++ (NSString *)updateNotesNotificationName {
+    return @"UpdateAllNotes";
 }
 
 @end

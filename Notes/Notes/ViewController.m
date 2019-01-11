@@ -14,7 +14,10 @@
 #import "Notes-Swift.h"
 
 @interface ViewController ()
+
 @property (nonatomic, strong) NSArray<Note *> *tableData;
+@property (readonly) NSString *noteDetailSegueIdentifier;
+
 @end
 
 @implementation ViewController
@@ -31,7 +34,7 @@
     } else {
         [self.tableView addSubview:self.refreshControl];
     }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"notes" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:[DataManager updateNotesNotificationName] object:nil];
 }
 
 - (void)refreshTable {
@@ -45,8 +48,8 @@
         }
         else {
             UIViewController *alertViewController = [UIAlertController alertControllerWithTitle:@"Error reading data" message:nil preferredStyle:UIAlertControllerStyleAlert];
-            [self presentViewController:alertViewController animated:TRUE completion:^{
-                [alertViewController dismissViewControllerAnimated:TRUE completion:nil];
+            [self presentViewController:alertViewController animated:YES completion:^{
+                [alertViewController dismissViewControllerAnimated:YES completion:nil];
                 [weakSelf.refreshControl endRefreshing];
             }];
             
@@ -99,17 +102,17 @@
     cell.titleLabel.text = note.title;
     cell.contentLabel.text = note.content;
     cell.contentLabel.textContainer.maximumNumberOfLines = 2;
-    cell.createdDateLabel.text = [note readableCreatedDate];
+    cell.createdDateLabel.text = note.readableCreatedDate;
     cell.categoryLabel.text = note.categoryTitle;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"NoteDetail" sender:self];
+    [self performSegueWithIdentifier:[self noteDetailSegueIdentifier] sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if  ([segue.identifier isEqualToString: @"NoteDetail"]) {
+    if  ([segue.identifier isEqualToString: [self noteDetailSegueIdentifier]]) {
         NoteDetailsViewController *destination = segue.destinationViewController;
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
         Note *note = [self.tableData objectAtIndex:indexPath.item];
@@ -117,5 +120,12 @@
     }
 }
 
+- (NSString *)noteDetailSegueIdentifier {
+    return @"NoteDetail";
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end

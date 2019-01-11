@@ -7,6 +7,7 @@
 //
 
 #import "Note.h"
+#import "Utils.h"
 
 @implementation Note
 - (instancetype)initWithTitle:(NSString *)title content:(NSString *)content categoryTitle:(NSString *)categoryTitle andCategoryId:(NSString *)categoryId {
@@ -32,9 +33,7 @@
 }
 
 - (NSString *)readableCreatedDate {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateStyle = NSDateFormatterLongStyle;
-    return [formatter stringFromDate:self.createdDate];
+    return [Utils dateToReadableDate:self.createdDate withStyle:NSDateFormatterMediumStyle];
 }
 
 
