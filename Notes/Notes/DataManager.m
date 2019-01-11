@@ -33,7 +33,7 @@
     return self;
 }
 
-- (void)getNotesWithCompletionBlock:(void (^)(NSArray * nullable, NSError *error))completionBlock {
+- (void)refreshNotesWithCompletionBlock:(void (^)(NSArray * nullable, NSError *error))completionBlock {
     NSString *urlAsString = [NSString stringWithFormat:@"https://s3.amazonaws.com/kezmo.assets/sandbox/notes.json"];
     
     NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
@@ -94,15 +94,63 @@
     return self.notes;
 }
 
- - (Category *)categoryById:(NSString *)categoryId{
-     __block Category *categoryNote;
-     [self.categories enumerateObjectsUsingBlock:^(Category * _Nonnull category, NSUInteger idx, BOOL * _Nonnull stop) {
-         if ([category.identifier isEqualToString:categoryId]){
-             categoryNote = category;
-         }
-     }];
-     return categoryNote;
- }
+- (NSArray <Category *> *)getCategories {
+    return self.categories;
+}
 
+- (NSArray <Note *> *)getNotes {
+    return self.notes;
+}
+
+- (Category *)getCategoryByTitle:(NSString *)title {
+    __block Category *categoryNote;
+    [self.categories enumerateObjectsUsingBlock:^(Category * _Nonnull category, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([category.title isEqualToString:title]){
+            categoryNote = category;
+        }
+    }];
+    return categoryNote;}
+
+- (Category *)categoryById:(NSString *)categoryId{
+    __block Category *categoryFound;
+    [self.categories enumerateObjectsUsingBlock:^(Category * _Nonnull category, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([category.identifier isEqualToString:categoryId]){
+            categoryFound = category;
+        }
+    }];
+    return categoryFound;
+}
+
+- (Note *)noteById:(NSString *)noteId{
+    __block Note *noteFound;
+    [self.notes enumerateObjectsUsingBlock:^(Note * _Nonnull note, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([note.identifier isEqualToString:noteId]){
+            noteFound = note;
+        }
+    }];
+    return noteFound;
+}
+
+- (void)addNote:(Note *)note {
+    self.notes = [self.notes arrayByAddingObject:note];
+    [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNotesNotificationName] object:note];
+}
+
+- (void)editNote:(Note *)note {
+    NSMutableArray *provisionalNotes = [NSMutableArray arrayWithArray:self.notes];
+    Note *tmpNote = [self noteById:note.identifier];
+    [provisionalNotes removeObject:tmpNote];
+    [provisionalNotes insertObject:note atIndex:0];
+    [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNoteNotificationNameForNote:note] object:note];
+    [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNotesNotificationName] object:note];
+}
+
++ (NSString *)updateNoteNotificationNameForNote:(Note *)note {
+    return [@"UpdateNote_" stringByAppendingString:note.identifier];
+}
+
++ (NSString *)updateNotesNotificationName {
+    return @"UpdateAllNotes";
+}
 
 @end

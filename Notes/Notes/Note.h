@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *categoryTitle;
 @property (strong, nonatomic) NSString *content;
 @property (strong, nonatomic) NSDate *createdDate;
+@property (readonly) NSString *readableCreatedDate;
 
 - (instancetype)initWithTitle:(NSString *)title content:(NSString *)content categoryTitle:(NSString *)categoryTitle andCategoryId:(NSString *)categoryId;
 - (instancetype)initWithId:(NSString *)noteId createdDate:(NSDate *)createdDate title:(NSString *)title content:(NSString *)content categoryTitle:(NSString *)categoryTitle andCategoryId:(NSString *)categoryId;
