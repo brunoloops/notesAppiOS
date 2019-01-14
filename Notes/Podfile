@@ -2,7 +2,7 @@ target 'Notes' do
     pod 'JGProgressHUD'
 end
 
-target 'NotesUITests' do
+target 'NotesUIKIFTests' do
     pod 'KIF/IdentifierTests', :configurations => ['Debug']
     pod 'KIF', :configurations => ['Debug']
 end
