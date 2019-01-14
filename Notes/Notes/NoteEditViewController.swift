@@ -36,6 +36,7 @@ class NoteEditViewController : UIViewController {
             self.titleTextField.text = ""
             self.contentTextView.text = ""
         }
+        self.titleTextField.becomeFirstResponder();
     }
     
     @IBAction func cancelAction(_ sender: Any) {

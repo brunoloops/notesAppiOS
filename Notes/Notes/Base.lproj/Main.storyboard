@@ -30,7 +30,8 @@
                         </prototypes>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
-                            <userDefinedRuntimeAttribute type="string" keyPath="accessiblityIdentifier" value="NotesTableView"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="NotesTableView"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="NotesTableView"/>
                         </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="lqY-fd-6Yb" id="psh-Hx-cy7"/>
@@ -258,6 +259,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ssL-k8-Xmi"/>
+        <segue reference="Hvz-OE-CWa"/>
     </inferredMetricsTieBreakers>
 </document>

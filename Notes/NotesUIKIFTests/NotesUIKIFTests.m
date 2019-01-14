@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import <KIF/KIF.h>
 #import "KIFUITestActor+EXAdditions.h"
+#import "NoteTableViewCell.h"
 
 @interface NotesUIKIFTests : KIFTestCase
 
@@ -30,13 +31,18 @@
 
 - (void)testAddNote {
     [tester navigateToAddNote];
-    [tester waitForViewWithAccessibilityLabel:@"Save"];
+    NSString *noteTitle = @"This is the note title";
+    [tester enterTextIntoCurrentFirstResponder:noteTitle];
     [tester tapViewWithAccessibilityLabel:@"Save"];
-    [tester waitForCellAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:0] inTableViewWithAccessibilityIdentifier:@"NotesTableView"];
+    NoteTableViewCell * noteTableViewCell = (NoteTableViewCell *)[tester waitForCellAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:0] inTableViewWithAccessibilityIdentifier:@"NotesTableView"];
+    
+    NSAssert([noteTitle isEqualToString: noteTableViewCell.titleLabel.text],@"Titles don't match");
 }
 
 - (void)testNoteDetail {
-    [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0] inTableViewWithAccessibilityIdentifier: @"NotesTableView"];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:5 inSection:0];
+    [tester waitForCellAtIndexPath:indexPath inTableViewWithAccessibilityIdentifier:@"NotesTableView"];
+    [tester tapRowAtIndexPath:indexPath inTableViewWithAccessibilityIdentifier: @"NotesTableView"];
     [tester waitForTappableViewWithAccessibilityLabel: @"Edit"];
 }
 
