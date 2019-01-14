@@ -130,6 +130,47 @@
 			path = NotesUIKIFTests;
 			sourceTree = "<group>";
 		};
+		84E54B9E21ED01D000663281 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84F3C12921E3A5AC0058B573 /* Note.h */,
+				84F3C12A21E3A5AC0058B573 /* Note.m */,
+				84F3C12C21E3AC960058B573 /* Category.h */,
+				84F3C12D21E3AC960058B573 /* Category.m */,
+				8493654221E4F4B600E63BEF /* DataManager.h */,
+				8493654321E4F4B600E63BEF /* DataManager.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84E54B9F21ED01E100663281 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84F3C0F821E3A2320058B573 /* ViewController.h */,
+				84F3C0F921E3A2320058B573 /* ViewController.m */,
+				84F3C0FB21E3A2320058B573 /* Main.storyboard */,
+				84F3C13121E3D08F0058B573 /* NoteTableViewCell.xib */,
+				84F3C13321E3D1180058B573 /* NoteTableViewCell.h */,
+				84F3C13421E3D1180058B573 /* NoteTableViewCell.m */,
+				8421FB1721E66DFF000A3B40 /* NoteDetailsViewController.swift */,
+				841EBDEA21E7898B0031F735 /* NoteEditViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		84E54BA021ED01F400663281 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				848798DF21E648C000A1FE15 /* UIViewController+Alerts.h */,
+				848798E021E648C000A1FE15 /* UIViewController+Alerts.m */,
+				841EBDE621E7855E0031F735 /* UITextField+Dropdown.swift */,
+				841EBDE821E786320031F735 /* PickerView.swift */,
+				84424D4A21E8E6AA00E11BD1 /* Utils.h */,
+				84424D4B21E8E6AA00E11BD1 /* Utils.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		84F3C0E921E3A2320058B573 = {
 			isa = PBXGroup;
 			children = (
@@ -158,31 +199,14 @@
 				84F3C12721E3A29A0058B573 /* notes.json */,
 				84F3C0F521E3A2320058B573 /* AppDelegate.h */,
 				84F3C0F621E3A2320058B573 /* AppDelegate.m */,
-				84F3C0F821E3A2320058B573 /* ViewController.h */,
-				84F3C0F921E3A2320058B573 /* ViewController.m */,
-				84F3C0FB21E3A2320058B573 /* Main.storyboard */,
+				84E54B9F21ED01E100663281 /* Views */,
 				84F3C0FE21E3A2330058B573 /* Assets.xcassets */,
 				84F3C10021E3A2330058B573 /* LaunchScreen.storyboard */,
 				84F3C10321E3A2330058B573 /* Info.plist */,
 				84F3C10421E3A2330058B573 /* main.m */,
-				84F3C12921E3A5AC0058B573 /* Note.h */,
-				84F3C12A21E3A5AC0058B573 /* Note.m */,
-				84F3C12C21E3AC960058B573 /* Category.h */,
-				84F3C12D21E3AC960058B573 /* Category.m */,
-				84F3C13121E3D08F0058B573 /* NoteTableViewCell.xib */,
-				84F3C13321E3D1180058B573 /* NoteTableViewCell.h */,
-				84F3C13421E3D1180058B573 /* NoteTableViewCell.m */,
-				8493654221E4F4B600E63BEF /* DataManager.h */,
-				8493654321E4F4B600E63BEF /* DataManager.m */,
-				848798DF21E648C000A1FE15 /* UIViewController+Alerts.h */,
-				848798E021E648C000A1FE15 /* UIViewController+Alerts.m */,
-				8421FB1721E66DFF000A3B40 /* NoteDetailsViewController.swift */,
+				84E54B9E21ED01D000663281 /* Model */,
+				84E54BA021ED01F400663281 /* Utils */,
 				8421FB1621E66DFE000A3B40 /* Notes-Bridging-Header.h */,
-				841EBDE621E7855E0031F735 /* UITextField+Dropdown.swift */,
-				841EBDE821E786320031F735 /* PickerView.swift */,
-				841EBDEA21E7898B0031F735 /* NoteEditViewController.swift */,
-				84424D4A21E8E6AA00E11BD1 /* Utils.h */,
-				84424D4B21E8E6AA00E11BD1 /* Utils.m */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
