@@ -6,21 +6,21 @@
 //  Copyright © 2019 admin. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "NotesTableViewController.h"
 #import "Note.h"
 #import "Category.h"
 #import "NoteTableViewCell.h"
 #import "DataManager.h"
 #import "Notes-Swift.h"
 
-@interface ViewController ()
+@interface NotesTableViewController ()
 
 @property (nonatomic, strong) NSArray<Note *> *tableData;
 @property (readonly) NSString *noteDetailSegueIdentifier;
 
 @end
 
-@implementation ViewController
+@implementation NotesTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,7 +39,7 @@
 
 - (void)refreshTable {
     DataManager *dataManager = [DataManager sharedManager];
-    __weak ViewController *weakSelf = self;
+    __weak NotesTableViewController *weakSelf = self;
     [dataManager refreshNotesWithCompletionBlock:^(NSArray * _Nullable notes, NSError * _Nullable error) {
         if (!error) {
             weakSelf.tableData = notes;

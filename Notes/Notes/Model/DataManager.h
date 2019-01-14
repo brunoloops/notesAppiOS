@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DataManager : NSObject
 
 + (NSString *)updateNotesNotificationName;
++ (NSString *)updateCategoriesNotificationName;
++ (NSString *)updateCategoryNotificationNameForCategory:(Category *)category;
 + (NSString *)updateNoteNotificationNameForNote:(Note *)note;
 
 + (instancetype) sharedManager;

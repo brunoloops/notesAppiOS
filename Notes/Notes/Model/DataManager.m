@@ -155,4 +155,13 @@
     return @"UpdateAllNotes";
 }
 
++ (NSString *)updateCategoriesNotificationName {
+    return @"UpdateAllCategories";
+}
+
++ (NSString *)updateCategoryNotificationNameForCategory:(Category *)category {
+    return [@"UpdateCategory_" stringByAppendingString:category.identifier];
+}
+
+
 @end
