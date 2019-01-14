@@ -25,10 +25,6 @@
     // Put teardown code here. This method is called after the invocation of each test method in the class.
 }
 
-- (void)testGoToAddNote {
-    [tester navigateToAddNote];
-}
-
 - (void)testAddNote {
     [tester navigateToAddNote];
     NSString *noteTitle = @"This is the note title";
@@ -44,6 +40,24 @@
     [tester waitForCellAtIndexPath:indexPath inTableViewWithAccessibilityIdentifier:@"NotesTableView"];
     [tester tapRowAtIndexPath:indexPath inTableViewWithAccessibilityIdentifier: @"NotesTableView"];
     [tester waitForTappableViewWithAccessibilityLabel: @"Edit"];
+}
+
+- (void)testEditNote {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:5 inSection:0];
+    [tester waitForCellAtIndexPath:indexPath inTableViewWithAccessibilityIdentifier:@"NotesTableView"];
+    [tester tapRowAtIndexPath:indexPath inTableViewWithAccessibilityIdentifier: @"NotesTableView"];
+    
+    [tester tapViewWithAccessibilityLabel:@"Edit"];
+    [tester clearTextFromFirstResponder];
+    NSString *noteTitle = @"This is the new note title";
+    [tester enterTextIntoCurrentFirstResponder:noteTitle];
+    [tester tapViewWithAccessibilityLabel:@"Save"];
+    [tester tapViewWithAccessibilityLabel:@"Notes"];
+
+
+    NoteTableViewCell * noteTableViewCell = (NoteTableViewCell *)[tester waitForCellAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0] inTableViewWithAccessibilityIdentifier:@"NotesTableView"];
+    
+    NSAssert([noteTitle isEqualToString: noteTableViewCell.titleLabel.text],@"Titles don't match");
 }
 
 @end
