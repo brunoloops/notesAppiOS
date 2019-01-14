@@ -37,6 +37,11 @@
                BlueprintName = "NotesTests"
                ReferencedContainer = "container:Notes.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "KWSpec">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">

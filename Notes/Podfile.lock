@@ -5,21 +5,33 @@ PODS:
   - KIF/Core (3.7.4)
   - KIF/IdentifierTests (3.7.4):
     - KIF/Core
+  - Kiwi (3.0.0)
+  - Nimble (7.3.0)
+  - Quick (1.3.0)
 
 DEPENDENCIES:
   - JGProgressHUD
   - KIF
   - KIF/IdentifierTests
+  - Kiwi (= 3.0.0)
+  - Nimble (= 7.3.0)
+  - Quick (= 1.3.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - JGProgressHUD
     - KIF
+    - Kiwi
+    - Nimble
+    - Quick
 
 SPEC CHECKSUMS:
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   KIF: f3d01c109ee9d1cfe6b0f2bb2aa278e807e971e2
+  Kiwi: fbeafef0f00e4d8f7dcb3420a4930afe70af77f7
+  Nimble: c8d6a1f463701921c46de965c673e13cafa09196
+  Quick: 03278013f71aa05fe9ecabc94fbcc6835f1ee76f
 
-PODFILE CHECKSUM: 5db1f26fbbb976da24d4ebf447a4f2e95bcc8c4f
+PODFILE CHECKSUM: 72dce0efa1e58bb2dc700d36fc47cf7ce4534381
 
 COCOAPODS: 1.5.3
