@@ -10,8 +10,8 @@
 
 @interface DataManager()
 
-@property (nonatomic, strong) NSArray *notes;
-@property (nonatomic, strong) NSArray *categories;
+@property (atomic, strong) NSMutableArray *notes;
+@property (atomic, strong) NSMutableArray *categories;
 
 @end
 
@@ -29,8 +29,8 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.notes = [NSArray array];
-        self.categories = [NSArray array];
+        self.notes = [NSMutableArray array];
+        self.categories = [NSMutableArray array];
     }
     return self;
 }
@@ -79,7 +79,7 @@
         Category *category = [[Category alloc] initWithId:categoryId title:categoryTitle andCreatedDate:categoryCreatedDate];
         [categoryArray addObject:category];
     }
-    self.categories = [NSArray arrayWithArray:categoryArray];
+    self.categories = categoryArray;
     
     NSMutableArray <Note *> *noteArray = [NSMutableArray new];
     for (NSDictionary *element in parseNotes){
@@ -92,16 +92,16 @@
         Note *note = [[Note alloc] initWithId: noteId createdDate:noteCreatedDate  title:noteTitle content:noteContent categoryTitle:categoryNote.title andCategoryId:noteCategoryId];
         [noteArray addObject:note];
     }
-    self.notes = [NSArray arrayWithArray:noteArray];
-    return self.notes;
+    self.notes = noteArray;
+    return [NSArray arrayWithArray:noteArray];
 }
 
 - (NSArray <Category *> *)getCategories {
-    return self.categories;
+    return [NSArray arrayWithArray:self.categories];
 }
 
 - (NSArray <Note *> *)getNotes {
-    return self.notes;
+    return [NSArray arrayWithArray:self.notes];
 }
 
 - (Category *)getCategoryByTitle:(NSString *)title {
@@ -134,7 +134,7 @@
 }
 
 - (void)addNote:(Note *)note {
-    self.notes = [self.notes arrayByAddingObject:note];
+    [self.notes addObject:note];
     [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNotesNotificationName] object:note];
 }
 
