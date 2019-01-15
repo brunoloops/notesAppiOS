@@ -53,6 +53,8 @@
                     if (!error) {
                         NSArray *notes = [self parseJsonData:notesDictionary];
                         dispatch_async(dispatch_get_main_queue(), ^{
+                            [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNotesNotificationName] object:nil];
+                            [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateCategoriesNotificationName] object:nil];
                             completionBlock(notes, nil);
                         });
                     } else {
@@ -93,6 +95,7 @@
         [noteArray addObject:note];
     }
     self.notes = noteArray;
+    
     return [NSArray arrayWithArray:noteArray];
 }
 

@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qr5-FK-0jP">
-                        <rect key="frame" x="317" y="0.0" width="90" height="48"/>
+                        <rect key="frame" x="337" y="0.0" width="90" height="48"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1K-jf-Hna" userLabel="Edit">
                                 <rect key="frame" x="0.0" y="0.0" width="45" height="48"/>
@@ -57,13 +57,13 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="bottomMargin" secondItem="qr5-FK-0jP" secondAttribute="bottom" id="7EL-ig-X9m"/>
-                <constraint firstItem="qr5-FK-0jP" firstAttribute="top" secondItem="n0A-oe-oba" secondAttribute="topMargin" id="9O2-R2-JT1"/>
+                <constraint firstAttribute="trailing" secondItem="qr5-FK-0jP" secondAttribute="trailing" id="62s-vx-Lpc"/>
+                <constraint firstItem="qr5-FK-0jP" firstAttribute="top" secondItem="n0A-oe-oba" secondAttribute="top" id="bZq-Uc-1Rz"/>
                 <constraint firstItem="gk1-96-VVm" firstAttribute="trailing" secondItem="n0A-oe-oba" secondAttribute="trailingMargin" id="gE1-4U-7Fc"/>
+                <constraint firstAttribute="bottom" secondItem="qr5-FK-0jP" secondAttribute="bottom" id="h3W-ee-Jq8"/>
                 <constraint firstItem="gk1-96-VVm" firstAttribute="leading" secondItem="n0A-oe-oba" secondAttribute="leadingMargin" id="laz-T5-tAh"/>
                 <constraint firstItem="gk1-96-VVm" firstAttribute="top" secondItem="n0A-oe-oba" secondAttribute="topMargin" id="opY-y4-WPd"/>
                 <constraint firstAttribute="bottomMargin" secondItem="gk1-96-VVm" secondAttribute="bottom" id="sJE-pM-moi"/>
-                <constraint firstAttribute="trailingMargin" secondItem="qr5-FK-0jP" secondAttribute="trailing" id="ukp-b6-YkI"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="q0T-bx-Ue7"/>
             <size key="customSize" width="427" height="48"/>
