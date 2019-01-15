@@ -3,3 +3,5 @@
 //
 
 #import "Note.h"
+#import "Category.h"
+#import "DataManager.h"
