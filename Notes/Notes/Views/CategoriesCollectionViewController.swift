@@ -10,41 +10,6 @@ import Foundation
 
 class CategoriesCollectionViewController : UICollectionViewController, CategoryCollectionViewCellDelegate {
     
-    @IBAction func addButtonAction(_ sender: Any) {
-        let addAlert = UIAlertController(title: "Add category", message: "Insert title of category", preferredStyle: UIAlertController.Style.alert)
-        addAlert.addTextField(configurationHandler: nil)
-        addAlert.addAction(UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: { (action) in
-            let title = addAlert.textFields?.first?.text
-            let category = Category(title:title!)
-            DataManager.shared().add(category)
-        }))
-        addAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        self.present(addAlert, animated: true, completion: nil)
-        
-    }
-    
-    func deleteButtonAction(cell: CategoryCollectionViewCell, category: Notes.Category) {
-        let deleteAlert = UIAlertController(title: "Delete \(category.title)", message: "Are you sure you want to delete the category", preferredStyle: UIAlertController.Style.alert)
-        deleteAlert.addAction(UIAlertAction(title: "Yes, delete", style: UIAlertAction.Style.destructive, handler: { (action) in
-            DataManager.shared().delete(category)
-        }))
-        deleteAlert.addAction(UIAlertAction(title: "Don't Delete", style: UIAlertAction.Style.cancel, handler: nil))
-        
-        self.present(deleteAlert, animated: true, completion: nil)
-    }
-    
-    func editButtonAction(cell: CategoryCollectionViewCell, category: Notes.Category) {
-        let editAlert = UIAlertController(title: "Edit \(category.title)", message: "Change title of category", preferredStyle: UIAlertController.Style.alert)
-        editAlert.addTextField(configurationHandler: nil)
-        editAlert.textFields?.first?.text = category.title
-        editAlert.addAction(UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: { (action) in
-            category.title = (editAlert.textFields?.first?.text)!
-            DataManager.shared().edit(category)
-        }))
-        editAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        self.present(editAlert, animated: true, completion: nil)
-    }
-    
     var collectionData : [Notes.Category] = []
     
     override func viewDidLoad() {
@@ -79,4 +44,38 @@ class CategoriesCollectionViewController : UICollectionViewController, CategoryC
         self.collectionView.reloadData()
     }
 
+    @IBAction func addButtonAction(_ sender: Any) {
+        let addAlert = UIAlertController(title: "Add category", message: "Insert title of category", preferredStyle: UIAlertController.Style.alert)
+        addAlert.addTextField(configurationHandler: nil)
+        addAlert.addAction(UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: { (action) in
+            let title = addAlert.textFields?.first?.text
+            let category = Category(title:title!)
+            DataManager.shared().add(category)
+        }))
+        addAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        self.present(addAlert, animated: true, completion: nil)
+        
+    }
+    
+    func deleteButtonAction(cell: CategoryCollectionViewCell, category: Notes.Category) {
+        let deleteAlert = UIAlertController(title: "Delete \(category.title)", message: "Are you sure you want to delete the category", preferredStyle: UIAlertController.Style.alert)
+        deleteAlert.addAction(UIAlertAction(title: "Yes, delete", style: UIAlertAction.Style.destructive, handler: { (action) in
+            DataManager.shared().delete(category)
+        }))
+        deleteAlert.addAction(UIAlertAction(title: "Don't Delete", style: UIAlertAction.Style.cancel, handler: nil))
+        
+        self.present(deleteAlert, animated: true, completion: nil)
+    }
+    
+    func editButtonAction(cell: CategoryCollectionViewCell, category: Notes.Category) {
+        let editAlert = UIAlertController(title: "Edit \(category.title)", message: "Change title of category", preferredStyle: UIAlertController.Style.alert)
+        editAlert.addTextField(configurationHandler: nil)
+        editAlert.textFields?.first?.text = category.title
+        editAlert.addAction(UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: { (action) in
+            category.title = (editAlert.textFields?.first?.text)!
+            DataManager.shared().edit(category)
+        }))
+        editAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        self.present(editAlert, animated: true, completion: nil)
+    }
 }
