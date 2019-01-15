@@ -19,53 +19,51 @@
                 <rect key="frame" x="0.0" y="0.0" width="427" height="48"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" alignment="center" spacing="181" translatesAutoresizingMaskIntoConstraints="NO" id="WwT-n0-kw6">
-                        <rect key="frame" x="20" y="0.0" width="387" height="48"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qr5-FK-0jP">
+                        <rect key="frame" x="317" y="0.0" width="90" height="48"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gk1-96-VVm">
-                                <rect key="frame" x="0.0" y="14" width="42" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qr5-FK-0jP">
-                                <rect key="frame" x="297" y="9" width="90" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1K-jf-Hna" userLabel="Edit">
-                                        <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
-                                        <color key="backgroundColor" red="0.0" green="0.31809361299958105" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Edit">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="editButtonAction:" destination="n0A-oe-oba" eventType="touchUpInside" id="c9V-pz-43l"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TG-Hv-wFQ" userLabel="Delete">
-                                        <rect key="frame" x="45" y="0.0" width="45" height="30"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.024170271515557396" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Delete">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="deleteButtonAction:" destination="n0A-oe-oba" eventType="touchUpInside" id="35O-Sl-Gks"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="8TG-Hv-wFQ" firstAttribute="width" secondItem="r1K-jf-Hna" secondAttribute="width" id="nrb-Tw-WAF"/>
-                                </constraints>
-                                <viewLayoutGuide key="safeArea" id="Jef-FJ-o7j"/>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1K-jf-Hna" userLabel="Edit">
+                                <rect key="frame" x="0.0" y="0.0" width="45" height="48"/>
+                                <color key="backgroundColor" red="0.0" green="0.31809361299958105" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="editButtonAction:" destination="n0A-oe-oba" eventType="touchUpInside" id="c9V-pz-43l"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TG-Hv-wFQ" userLabel="Delete">
+                                <rect key="frame" x="45" y="0.0" width="45" height="48"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.024170271515557396" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteButtonAction:" destination="n0A-oe-oba" eventType="touchUpInside" id="35O-Sl-Gks"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="8TG-Hv-wFQ" firstAttribute="width" secondItem="r1K-jf-Hna" secondAttribute="width" id="nrb-Tw-WAF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Jef-FJ-o7j"/>
                     </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gk1-96-VVm">
+                        <rect key="frame" x="20" y="0.0" width="387" height="48"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="WwT-n0-kw6" firstAttribute="top" secondItem="n0A-oe-oba" secondAttribute="topMargin" id="IUL-xl-ZIK"/>
-                <constraint firstItem="WwT-n0-kw6" firstAttribute="leading" secondItem="n0A-oe-oba" secondAttribute="leadingMargin" id="fGb-pp-hwx"/>
-                <constraint firstAttribute="trailingMargin" secondItem="WwT-n0-kw6" secondAttribute="trailing" id="hdl-bJ-6OQ"/>
-                <constraint firstAttribute="bottomMargin" secondItem="WwT-n0-kw6" secondAttribute="bottom" id="kIr-Yf-llB"/>
+                <constraint firstAttribute="bottomMargin" secondItem="qr5-FK-0jP" secondAttribute="bottom" id="7EL-ig-X9m"/>
+                <constraint firstItem="qr5-FK-0jP" firstAttribute="top" secondItem="n0A-oe-oba" secondAttribute="topMargin" id="9O2-R2-JT1"/>
+                <constraint firstItem="gk1-96-VVm" firstAttribute="trailing" secondItem="n0A-oe-oba" secondAttribute="trailingMargin" id="gE1-4U-7Fc"/>
+                <constraint firstItem="gk1-96-VVm" firstAttribute="leading" secondItem="n0A-oe-oba" secondAttribute="leadingMargin" id="laz-T5-tAh"/>
+                <constraint firstItem="gk1-96-VVm" firstAttribute="top" secondItem="n0A-oe-oba" secondAttribute="topMargin" id="opY-y4-WPd"/>
+                <constraint firstAttribute="bottomMargin" secondItem="gk1-96-VVm" secondAttribute="bottom" id="sJE-pM-moi"/>
+                <constraint firstAttribute="trailingMargin" secondItem="qr5-FK-0jP" secondAttribute="trailing" id="ukp-b6-YkI"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="q0T-bx-Ue7"/>
             <size key="customSize" width="427" height="48"/>
