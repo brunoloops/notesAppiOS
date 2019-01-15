@@ -67,6 +67,7 @@
     if ([self.tableData count]) {
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        self.tableView.backgroundView = nil;
         return 1;
         
     } else {
@@ -118,6 +119,15 @@
         Note *note = [self.tableData objectAtIndex:indexPath.item];
         destination.note = note;
     }
+}
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    __weak NotesTableViewController *weakSelf = self;
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        Note *note = [weakSelf.tableData objectAtIndex:indexPath.row];
+        [[DataManager sharedManager] deleteNote:note];
+    }];
+    return [NSArray arrayWithObject:deleteAction];
 }
 
 - (NSString *)noteDetailSegueIdentifier {

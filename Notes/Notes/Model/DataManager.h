@@ -27,8 +27,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (Category *)getCategoryByTitle:(NSString *)title;
 - (Category *)categoryById:(NSString *)categoryId;
 - (Note *)noteById:(NSString *)noteId;
+
 - (void)addNote:(Note *)note;
 - (void)editNote:(Note *)note;
+- (void)deleteNote:(Note *)note;
+
+- (void)addCategory:(Category *)category;
+- (void)editCategory:(Category *)category;
+- (void)deleteCategory:(Category *)category;
 
 @end
 

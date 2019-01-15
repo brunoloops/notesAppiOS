@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithId:(NSString *)categoryId title:(NSString *)title andCreatedDate:(NSDate *)createdDate;
 - (instancetype)initWithId:(NSString *)categoryId andTitle:(NSString *)title;
+- (instancetype)initWithTitle:(NSString *)title;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -135,16 +135,61 @@
 
 - (void)addNote:(Note *)note {
     [self.notes addObject:note];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNotesNotificationName] object:note];
 }
 
 - (void)editNote:(Note *)note {
-    NSMutableArray *provisionalNotes = [NSMutableArray arrayWithArray:self.notes];
     Note *tmpNote = [self noteById:note.identifier];
-    [provisionalNotes removeObject:tmpNote];
-    [provisionalNotes insertObject:note atIndex:0];
+    NSInteger index = [self.notes indexOfObject:tmpNote];
+    if (index >= self.notes.count)
+        return;
+    [self.notes replaceObjectAtIndex:index withObject:note];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNoteNotificationNameForNote:note] object:note];
     [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNotesNotificationName] object:note];
+}
+
+- (void)deleteNote:(Note *)note {
+    Note *tmpNote = [self noteById:note.identifier];
+    [self.notes removeObject:tmpNote];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNotesNotificationName] object:note];
+}
+
+- (void)addCategory:(Category *)category {
+    [self.categories addObject:category];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateCategoriesNotificationName] object:category];
+}
+
+- (void)editCategory:(Category *)category {
+    Category *tmpCategory = [self categoryById:category.identifier];
+    NSInteger index = [self.categories indexOfObject:tmpCategory];
+    if (index >= self.categories.count)
+        return;
+    [self.categories replaceObjectAtIndex:index withObject:category];
+    [self updateNotesWithCategory:category];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateCategoriesNotificationName] object:category];
+    [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateCategoryNotificationNameForCategory:category] object:category];
+}
+
+- (void)deleteCategory:(Category *)category {
+    Category *tmpCategory = [self categoryById:category.identifier];
+    [self.categories removeObject:tmpCategory];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateCategoriesNotificationName] object:category];
+}
+
+- (void)updateNotesWithCategory:(Category *)category {
+    [self.notes enumerateObjectsUsingBlock:^(Note *_Nonnull note, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([note.categoryId isEqualToString:category.identifier]) {
+            note.categoryTitle = category.title;
+            [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNoteNotificationNameForNote:note] object:note];
+        }
+    }];
+    [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNotesNotificationName] object:nil];
 }
 
 + (NSString *)updateNoteNotificationNameForNote:(Note *)note {
