@@ -71,9 +71,17 @@ class CategoriesCollectionViewController : UICollectionViewController, CategoryC
         let editAlert = UIAlertController(title: "Edit \(category.title)", message: "Change title of category", preferredStyle: UIAlertController.Style.alert)
         editAlert.addTextField(configurationHandler: nil)
         editAlert.textFields?.first?.text = category.title
+        weak var weakSelf = self
         editAlert.addAction(UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: { (action) in
             category.title = (editAlert.textFields?.first?.text)!
-            DataManager.shared().edit(category)
+            var error: NSError?
+            DataManager.shared().edit(category, withError: &error);
+            if (error != nil) {
+                let errorAlert = UIAlertController(title: "Error editing note", message: "Note not found", preferredStyle: UIAlertController.Style.alert)
+                errorAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                
+                weakSelf!.present(errorAlert, animated: true, completion: nil)
+            }
         }))
         editAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         self.present(editAlert, animated: true, completion: nil)

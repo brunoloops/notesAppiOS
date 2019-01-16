@@ -29,11 +29,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (Note *)noteById:(NSString *)noteId;
 
 - (void)addNote:(Note *)note;
-- (void)editNote:(Note *)note;
+- (void)editNote:(Note *)note withError:(NSError **)error;
 - (void)deleteNote:(Note *)note;
 
 - (void)addCategory:(Category *)category;
-- (void)editCategory:(Category *)category;
+- (void)editCategory:(Category *)category withError:(NSError **)error;
 - (void)deleteCategory:(Category *)category;
 
 @end

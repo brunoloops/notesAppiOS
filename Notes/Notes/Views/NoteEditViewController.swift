@@ -50,7 +50,14 @@ class NoteEditViewController : UIViewController {
             self.note!.categoryTitle = category.title
             self.note!.categoryId = category.identifier
             self.note!.content = self.contentTextView.text
-            DataManager.shared().edit(self.note!);
+            var error: NSError?
+            DataManager.shared().edit(self.note!, withError: &error);
+            if (error != nil) {
+                let errorAlert = UIAlertController(title: "Error editing note", message: "Note not found", preferredStyle: UIAlertController.Style.alert)
+                errorAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                
+                self.present(errorAlert, animated: true, completion: nil)
+            }
         } else {
             self.note = Note(title: self.titleTextField.text!, content: self.contentTextView.text!, categoryTitle: category.title, andCategoryId: category.identifier)
             DataManager.shared().add(note!)

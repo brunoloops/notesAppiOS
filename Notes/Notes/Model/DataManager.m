@@ -142,11 +142,13 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNotesNotificationName] object:note];
 }
 
-- (void)editNote:(Note *)note {
+- (void)editNote:(Note *)note withError:(NSError * _Nonnull *)error {
     Note *tmpNote = [self noteById:note.identifier];
-    NSInteger index = [self.notes indexOfObject:tmpNote];
-    if (index >= self.notes.count)
+    if (!tmpNote) {
+        *error = [NSError errorWithDomain:@"com.OrangeLoops.Notes.ErrorDomain" code:NSNotFound userInfo:nil];
         return;
+    }
+    NSInteger index = [self.notes indexOfObject:tmpNote];
     [self.notes replaceObjectAtIndex:index withObject:note];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateNoteNotificationNameForNote:note] object:note];
@@ -166,11 +168,13 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:[DataManager updateCategoriesNotificationName] object:category];
 }
 
-- (void)editCategory:(Category *)category {
+- (void)editCategory:(Category *)category withError:(NSError * _Nonnull *)error {
     Category *tmpCategory = [self categoryById:category.identifier];
-    NSInteger index = [self.categories indexOfObject:tmpCategory];
-    if (index >= self.categories.count)
+    if (!tmpCategory) {
+        *error = [NSError errorWithDomain:@"com.OrangeLoops.Notes.ErrorDomain" code:NSNotFound userInfo:nil];
         return;
+    }
+    NSInteger index = [self.categories indexOfObject:tmpCategory];
     [self.categories replaceObjectAtIndex:index withObject:category];
     [self updateNotesWithCategory:category];
     
