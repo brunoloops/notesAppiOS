@@ -6,21 +6,21 @@
 //  Copyright © 2019 admin. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "NotesTableViewController.h"
 #import "Note.h"
 #import "Category.h"
 #import "NoteTableViewCell.h"
 #import "DataManager.h"
 #import "Notes-Swift.h"
 
-@interface ViewController ()
+@interface NotesTableViewController ()
 
 @property (nonatomic, strong) NSArray<Note *> *tableData;
 @property (readonly) NSString *noteDetailSegueIdentifier;
 
 @end
 
-@implementation ViewController
+@implementation NotesTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,7 +39,7 @@
 
 - (void)refreshTable {
     DataManager *dataManager = [DataManager sharedManager];
-    __weak ViewController *weakSelf = self;
+    __weak NotesTableViewController *weakSelf = self;
     [dataManager refreshNotesWithCompletionBlock:^(NSArray * _Nullable notes, NSError * _Nullable error) {
         if (!error) {
             weakSelf.tableData = notes;
@@ -67,6 +67,7 @@
     if ([self.tableData count]) {
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        self.tableView.backgroundView = nil;
         return 1;
         
     } else {
@@ -118,6 +119,15 @@
         Note *note = [self.tableData objectAtIndex:indexPath.item];
         destination.note = note;
     }
+}
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    __weak NotesTableViewController *weakSelf = self;
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        Note *note = [weakSelf.tableData objectAtIndex:indexPath.row];
+        [[DataManager sharedManager] deleteNote:note];
+    }];
+    return [NSArray arrayWithObject:deleteAction];
 }
 
 - (NSString *)noteDetailSegueIdentifier {

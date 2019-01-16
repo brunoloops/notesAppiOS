@@ -9,6 +9,7 @@
 #import "NoteTableViewCell.h"
 
 @implementation NoteTableViewCell
+
 + (NSString *)identifier {
     return @"noteTableViewCell";
 }

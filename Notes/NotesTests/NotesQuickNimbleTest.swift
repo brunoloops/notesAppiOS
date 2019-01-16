@@ -34,4 +34,58 @@ class NotesQuickNimbleTest: XCTestCase {
         expect(note.createdDate).notTo(beNil())
     }
 
+    func testAddCategory() {
+        let title = "Category title"
+        let category = Category.init(title:title)
+        
+        DataManager.shared().add(category)
+        
+        let categories = DataManager.shared().getCategories()
+        let lastCategoryAdded = categories.last
+        
+        expect(title).to(equal(lastCategoryAdded?.title))
+    }
+    
+    func testEditCategory() {
+        let newTitle = "New Category title"
+        let categoryToEdit = DataManager.shared().getCategories().last
+        let newCategory = Category.init(title:newTitle)
+        newCategory.identifier = (categoryToEdit?.identifier)!
+        
+        DataManager.shared().edit(newCategory)
+        
+        let categoryEdited = DataManager.shared().getCategories().last
+        
+        expect(categoryEdited?.title).to(equal(newTitle))
+    }
+    
+    func testEditCategoryTitle() {
+        let note = DataManager.shared().getNotes().first!
+        let category = DataManager.shared().getCategoryByTitle(note.categoryTitle)
+        let newTitle = "This is the new category title"
+        
+        category.title = newTitle
+        DataManager.shared().edit(category)
+        let newNote = DataManager.shared().getNotes().first!
+        
+        expect(newNote.categoryTitle).to(equal(newTitle))
+    }
+    
+    func testDeleteCategory() {
+        let categories = DataManager.shared().getCategories()
+        
+        DataManager.shared().delete(categories.last!)
+        let newCategories = DataManager.shared().getCategories()
+        
+        expect(categories.count - 1).to(equal(newCategories.count))
+    }
+    
+    func testDeleteNote() {
+        let notes = DataManager.shared().getNotes()
+        
+        DataManager.shared().delete(notes.last!)
+        let newNotes = DataManager.shared().getNotes()
+        
+        expect(notes.count - 1).to(equal(newNotes.count))
+    }
 }

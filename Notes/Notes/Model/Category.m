@@ -19,6 +19,7 @@
     }
     return self;
 }
+
 - (instancetype)initWithId:(NSString *)categoryId title:(NSString *)title andCreatedDate:(NSDate *)createdDate{
     self = [self initWithId:categoryId andTitle:title];
     if (self) {
@@ -26,4 +27,15 @@
     }
     return self;
 }
+
+- (instancetype)initWithTitle:(NSString *)title {
+    self = [super init];
+    if (self) {
+        self.identifier = [[NSUUID UUID] UUIDString];
+        self.title = title;
+        self.createdDate = [NSDate date];
+    }
+    return self;
+}
+
 @end

@@ -14,6 +14,9 @@
 		841EBDEB21E7898B0031F735 /* NoteEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EBDEA21E7898B0031F735 /* NoteEditViewController.swift */; };
 		8421FB1821E66DFF000A3B40 /* NoteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421FB1721E66DFF000A3B40 /* NoteDetailsViewController.swift */; };
 		84424D4C21E8E6AA00E11BD1 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84424D4B21E8E6AA00E11BD1 /* Utils.m */; };
+		845A298C21ED20D500DCC911 /* CategoriesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845A298B21ED20D500DCC911 /* CategoriesCollectionViewController.swift */; };
+		845A298E21ED28CF00DCC911 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845A298D21ED28CF00DCC911 /* CategoryCollectionViewCell.xib */; };
+		845A299021ED292100DCC911 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845A298F21ED292100DCC911 /* CategoryCollectionViewCell.swift */; };
 		845A297E21ED154000DCC911 /* libKiwi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 845A297D21ED154000DCC911 /* libKiwi.a */; };
 		845A298321ED17DB00DCC911 /* NotesKiwiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A298221ED17DB00DCC911 /* NotesKiwiTest.m */; };
 		845A298621ED1ADC00DCC911 /* NotesQuickNimbleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845A298521ED1ADC00DCC911 /* NotesQuickNimbleTest.swift */; };
@@ -25,7 +28,7 @@
 		84CA788821E91B3E00E1A5BC /* KIFUITestActor+EXAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA787521E9185800E1A5BC /* KIFUITestActor+EXAdditions.m */; };
 		84D6132021ECF85200D60CBE /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D6131F21ECF85200D60CBE /* libKIF.a */; };
 		84F3C0F721E3A2320058B573 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3C0F621E3A2320058B573 /* AppDelegate.m */; };
-		84F3C0FA21E3A2320058B573 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3C0F921E3A2320058B573 /* ViewController.m */; };
+		84F3C0FA21E3A2320058B573 /* NotesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3C0F921E3A2320058B573 /* NotesTableViewController.m */; };
 		84F3C0FD21E3A2320058B573 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F3C0FB21E3A2320058B573 /* Main.storyboard */; };
 		84F3C0FF21E3A2330058B573 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F3C0FE21E3A2330058B573 /* Assets.xcassets */; };
 		84F3C10221E3A2330058B573 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F3C10021E3A2330058B573 /* LaunchScreen.storyboard */; };
@@ -71,6 +74,9 @@
 		8421FB1721E66DFF000A3B40 /* NoteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailsViewController.swift; sourceTree = "<group>"; };
 		84424D4A21E8E6AA00E11BD1 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		84424D4B21E8E6AA00E11BD1 /* Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		845A298B21ED20D500DCC911 /* CategoriesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewController.swift; sourceTree = "<group>"; };
+		845A298D21ED28CF00DCC911 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		845A298F21ED292100DCC911 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		845A297D21ED154000DCC911 /* libKiwi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libKiwi.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		845A298221ED17DB00DCC911 /* NotesKiwiTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotesKiwiTest.m; sourceTree = "<group>"; };
 		845A298421ED1ADB00DCC911 /* NotesTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NotesTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -90,8 +96,8 @@
 		84F3C0F221E3A2320058B573 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F3C0F521E3A2320058B573 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84F3C0F621E3A2320058B573 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		84F3C0F821E3A2320058B573 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		84F3C0F921E3A2320058B573 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		84F3C0F821E3A2320058B573 /* NotesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotesTableViewController.h; sourceTree = "<group>"; };
+		84F3C0F921E3A2320058B573 /* NotesTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotesTableViewController.m; sourceTree = "<group>"; };
 		84F3C0FC21E3A2320058B573 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84F3C0FE21E3A2330058B573 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84F3C10121E3A2330058B573 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -171,14 +177,17 @@
 		84E54B9F21ED01E100663281 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				84F3C0F821E3A2320058B573 /* ViewController.h */,
-				84F3C0F921E3A2320058B573 /* ViewController.m */,
+				84F3C0F821E3A2320058B573 /* NotesTableViewController.h */,
+				84F3C0F921E3A2320058B573 /* NotesTableViewController.m */,
 				84F3C0FB21E3A2320058B573 /* Main.storyboard */,
 				84F3C13121E3D08F0058B573 /* NoteTableViewCell.xib */,
 				84F3C13321E3D1180058B573 /* NoteTableViewCell.h */,
 				84F3C13421E3D1180058B573 /* NoteTableViewCell.m */,
 				8421FB1721E66DFF000A3B40 /* NoteDetailsViewController.swift */,
 				841EBDEA21E7898B0031F735 /* NoteEditViewController.swift */,
+				845A298D21ED28CF00DCC911 /* CategoryCollectionViewCell.xib */,
+				845A298F21ED292100DCC911 /* CategoryCollectionViewCell.swift */,
+				845A298B21ED20D500DCC911 /* CategoriesCollectionViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -391,6 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845A298E21ED28CF00DCC911 /* CategoryCollectionViewCell.xib in Resources */,
 				84F3C10221E3A2330058B573 /* LaunchScreen.storyboard in Resources */,
 				84F3C0FF21E3A2330058B573 /* Assets.xcassets in Resources */,
 				84F3C0FD21E3A2320058B573 /* Main.storyboard in Resources */,
@@ -513,7 +523,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F3C0FA21E3A2320058B573 /* ViewController.m in Sources */,
+				84F3C0FA21E3A2320058B573 /* NotesTableViewController.m in Sources */,
+				845A299021ED292100DCC911 /* CategoryCollectionViewCell.swift in Sources */,
 				84F3C10521E3A2330058B573 /* main.m in Sources */,
 				8493654421E4F4B600E63BEF /* DataManager.m in Sources */,
 				84424D4C21E8E6AA00E11BD1 /* Utils.m in Sources */,
@@ -523,6 +534,7 @@
 				841EBDEB21E7898B0031F735 /* NoteEditViewController.swift in Sources */,
 				84F3C13521E3D1180058B573 /* NoteTableViewCell.m in Sources */,
 				8421FB1821E66DFF000A3B40 /* NoteDetailsViewController.swift in Sources */,
+				845A298C21ED20D500DCC911 /* CategoriesCollectionViewController.swift in Sources */,
 				84F3C0F721E3A2320058B573 /* AppDelegate.m in Sources */,
 				84F3C12B21E3A5AC0058B573 /* Note.m in Sources */,
 				848798E121E648C000A1FE15 /* UIViewController+Alerts.m in Sources */,
