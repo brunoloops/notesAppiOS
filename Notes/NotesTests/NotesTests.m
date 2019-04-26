@@ -108,14 +108,14 @@
     
     Note *note = [[Note alloc] initWithTitle:title content:content categoryTitle:categoryTitle andCategoryId:categoryId];
     NSArray <Note *> *notes = [[DataManager sharedManager] getNotes];
-    
-    NSAssert([notes count] == 6, @"Initial notes error");
-    
+  
+    NSInteger notesCount = [notes count];
+  
     [[DataManager sharedManager] addNote:note];
     notes = [[DataManager sharedManager] getNotes];
     Note *addedNote = [notes lastObject];
     
-    NSAssert([notes count] == 7, @"Note not added");
+    NSAssert([notes count] == notesCount + 1, @"Note not added");
     NSAssert([addedNote.identifier isEqualToString:note.identifier], @"Note added diferent from created");
 }
 
