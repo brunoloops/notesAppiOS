@@ -24,16 +24,16 @@
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
 }
-//
-//- (void)testAddNote {
-//    [tester navigateToAddNote];
-//    NSString *noteTitle = @"This is the note title";
-//    [tester enterTextIntoCurrentFirstResponder:noteTitle];
-//    [tester tapViewWithAccessibilityLabel:@"Save"];
-//    NoteTableViewCell * noteTableViewCell = (NoteTableViewCell *)[tester waitForCellAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:0] inTableViewWithAccessibilityIdentifier:@"NotesTableView"];
-//    
-//    NSAssert([noteTitle isEqualToString: noteTableViewCell.titleLabel.text],@"Titles don't match");
-//}
+
+- (void)testAddNote {
+    [tester navigateToAddNote];
+    NSString *noteTitle = @"This is the note title";
+    [tester enterTextIntoCurrentFirstResponder:noteTitle];
+    [tester tapViewWithAccessibilityLabel:@"Save"];
+    NoteTableViewCell * noteTableViewCell = (NoteTableViewCell *)[tester waitForCellAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:0] inTableViewWithAccessibilityIdentifier:@"NotesTableView"];
+    
+    NSAssert([noteTitle isEqualToString: noteTableViewCell.titleLabel.text],@"Titles don't match");
+}
 
 - (void)testNoteDetail {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:5 inSection:0];
