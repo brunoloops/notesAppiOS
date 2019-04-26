@@ -47,28 +47,28 @@ class NotesQuickNimbleTest: XCTestCase {
     }
     
     func testEditCategory() {
-        let newTitle = "New Category title"
-        let categoryToEdit = DataManager.shared().getCategories().last
-        let newCategory = Category.init(title:newTitle)
-        newCategory.identifier = (categoryToEdit?.identifier)!
-        
-        DataManager.shared().edit(newCategory)
-        
-        let categoryEdited = DataManager.shared().getCategories().last
-        
-        expect(categoryEdited?.title).to(equal(newTitle))
+      let newTitle = "New Category title"
+      let categoryToEdit = DataManager.shared().getCategories().last
+      let newCategory = Category.init(title:newTitle)
+      newCategory.identifier = (categoryToEdit?.identifier)!
+      DataManager.shared().edit(newCategory, withError: nil)
+
+
+      let categoryEdited = DataManager.shared().getCategories().last
+
+      expect(categoryEdited?.title).to(equal(newTitle))
     }
     
     func testEditCategoryTitle() {
-        let note = DataManager.shared().getNotes().first!
-        let category = DataManager.shared().getCategoryByTitle(note.categoryTitle)
-        let newTitle = "This is the new category title"
-        
-        category.title = newTitle
-        DataManager.shared().edit(category)
-        let newNote = DataManager.shared().getNotes().first!
-        
-        expect(newNote.categoryTitle).to(equal(newTitle))
+      let note = DataManager.shared().getNotes().first!
+      let category = DataManager.shared().getCategoryByTitle(note.categoryTitle)
+      let newTitle = "This is the new category title"
+
+      category.title = newTitle
+      DataManager.shared().edit(category, withError: nil)
+      let newNote = DataManager.shared().getNotes().first!
+
+      expect(newNote.categoryTitle).to(equal(newTitle))
     }
     
     func testDeleteCategory() {

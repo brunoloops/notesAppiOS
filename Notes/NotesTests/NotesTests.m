@@ -120,20 +120,20 @@
 }
 
 - (void)testEditNote {
-    NSString *title = @"Note Title";
-    NSString *categoryTitle = @"Category Title";
-    NSString *categoryId = @"categoryId";
-    NSString *content = @"Content of the note";
-    
-    Note *note = [[Note alloc] initWithTitle:title content:content categoryTitle:categoryTitle andCategoryId:categoryId];
-    [[DataManager sharedManager] addNote:note];
-    content = @"Diferent content of the note";
-    note.content = content;
-    [[DataManager sharedManager] editNote:note];
-    Note *editedNote = [[DataManager sharedManager] noteById:note.identifier];
-    
-    NSAssert([editedNote.identifier isEqualToString:note.identifier], @"Note added diferent from created");
-    NSAssert([editedNote.content isEqualToString:content], @"Content not edited");
+  NSString *title = @"Note Title";
+  NSString *categoryTitle = @"Category Title";
+  NSString *categoryId = @"categoryId";
+  NSString *content = @"Content of the note";
+
+  Note *note = [[Note alloc] initWithTitle:title content:content categoryTitle:categoryTitle andCategoryId:categoryId];
+  [[DataManager sharedManager] addNote:note];
+  content = @"Diferent content of the note";
+  note.content = content;
+  [[DataManager sharedManager] editNote:note withError:nil];
+  Note *editedNote = [[DataManager sharedManager] noteById:note.identifier];
+
+  NSAssert([editedNote.identifier isEqualToString:note.identifier], @"Note added diferent from created");
+  NSAssert([editedNote.content isEqualToString:content], @"Content not edited");
 }
 
 @end

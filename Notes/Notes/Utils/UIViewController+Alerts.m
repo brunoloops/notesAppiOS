@@ -8,7 +8,7 @@
 
 #import "UIViewController+Alerts.h"
 #import <objc/runtime.h>
-#import <JGProgressHUD.h>
+#import "JGProgressHUD.h"
 
 static const char *alertViewControllersKey = "alertViewControllersKey";
 
