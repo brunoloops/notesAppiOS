@@ -48,15 +48,15 @@ class NotesQuickNimbleTest: XCTestCase {
     
     func testEditCategory() {
       let newTitle = "New Category title"
-      let categoryToEdit = DataManager.shared().getCategories().last
+      let categoryToEdit = DataManager.shared().getCategories().last!
       let newCategory = Category.init(title:newTitle)
-      newCategory.identifier = (categoryToEdit?.identifier)!
+      newCategory.identifier = categoryToEdit.identifier
       DataManager.shared().edit(newCategory, withError: nil)
 
 
-      let categoryEdited = DataManager.shared().getCategories().last
+      let categoryEdited = DataManager.shared().category(byId: categoryToEdit.identifier)
 
-      expect(categoryEdited?.title).to(equal(newTitle))
+      expect(categoryEdited.title).to(equal(newTitle))
     }
     
     func testEditCategoryTitle() {
@@ -72,20 +72,22 @@ class NotesQuickNimbleTest: XCTestCase {
     }
     
     func testDeleteCategory() {
-        let categories = DataManager.shared().getCategories()
-        
-        DataManager.shared().delete(categories.last!)
-        let newCategories = DataManager.shared().getCategories()
-        
-        expect(categories.count - 1).to(equal(newCategories.count))
+      let categories = DataManager.shared().getCategories()
+      let categoriesCount = categories.count
+      
+      DataManager.shared().delete(categories.last!)
+      let newCategories = DataManager.shared().getCategories()
+      
+      expect(categoriesCount - 1).to(equal(newCategories.count))
     }
     
     func testDeleteNote() {
-        let notes = DataManager.shared().getNotes()
-        
-        DataManager.shared().delete(notes.last!)
-        let newNotes = DataManager.shared().getNotes()
-        
-        expect(notes.count - 1).to(equal(newNotes.count))
+      let notes = DataManager.shared().getNotes()
+      let notesCount = notes.count
+      
+      DataManager.shared().delete(notes.last!)
+      let newNotes = DataManager.shared().getNotes()
+      
+      expect(notesCount - 1).to(equal(newNotes.count))
     }
 }
